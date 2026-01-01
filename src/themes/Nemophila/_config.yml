@@ -1,12 +1,25 @@
 # Menu-Sidebar
 menu:
-  Home: /
-  Archives: /archives
-  Categories: /categories
-  Tags: /tags
-  About: /about
+  首页:
+    path: /
+    icon: ico/navbar/home.svg
+  归档:
+    path: /archives/
+    icon: ico/navbar/archive.svg
+  Lists:
+    path: /lists/
+    icon: ico/navbar/list.svg
+  Friends:
+    path: /friends/
+    icon: ico/navbar/heart.svg
+  Project:
+    path: /project/
+    icon: ico/navbar/coffee.svg
 
-rss: /atom.xml
+# rss: /atom.xml
+rss:
+    path: /atom.xml
+    icon: ico/navbar/rss.svg
 banner: "images/banner_sky.jpg"
 
 # Content

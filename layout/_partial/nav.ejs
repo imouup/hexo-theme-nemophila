@@ -1,4 +1,11 @@
 <nav class="navbar">
-    <h1>Hello, Monica</h1> 
-
+    <h1 id="title">Nemophila</h1> 
+    <div class="navlink">
+        <% for (let link in theme.menu) { %>
+            <a href="<%- url_for(theme.menu[link].path) %>" class="navlink-item">
+                <img src="<%- url_for(theme.menu[link].icon) %>" class="navlink-icon" alt="<%= link %>">
+                <span><%= link %></span>
+            </a>
+        <% } %>
+    </div>
 </nav>

@@ -1,11 +1,51 @@
 <nav class="navbar">
-    <h1 id="title">Nemophila</h1> 
+    <a href="<%- url_for('/') %>" style="text-decoration: none;">
+        <h1 id="title">Nemophila</h1> 
+    </a>
     <div class="navlink">
         <% for (let link in theme.menu) { %>
-            <a href="<%- url_for(theme.menu[link].path) %>" class="navlink-item">
-                <img src="<%- url_for(theme.menu[link].icon) %>" class="navlink-icon" alt="<%= link %>">
-                <span><%= link %></span>
-            </a>
+            <div class="nav-item-container">
+                <a href="<%- url_for(theme.menu[link].path) %>" class="navlink-item">
+                    <div class="nav-icon" 
+                        style="-webkit-mask-image: url('<%- url_for(theme.menu[link].icon) %>'); mask-image: url('<%- url_for(theme.menu[link].icon) %>');">
+                     </div>
+                    <span><%= link %></span>
+                    
+                    <% if (theme.menu[link].submenu) { %>
+                        <i class="fa-solid fa-angle-down fa"></i>
+                    <% } %>
+
+                </a>
+                
+                <% if (theme.menu[link].submenu) { %>
+                    <div class="nav-item-submenu">
+                        <% for (let sublink in theme.menu[link].submenu) { %>
+                            <% let path = ""; %>
+                            <% let item = theme.menu[link].submenu[sublink]; %>
+                            <% if (item.type === 'page') { %>
+                                <% path = url_for(item.path); %>
+                            <% } else if (item.type === 'link') { %>
+                                <% path = item.path; %>
+                            <% } %>
+                            <a href="<%= path %>">
+                                <% if (item.icon) {%>
+                                    <i class="<%= item.icon %>" style="transform: translateY(15%); font-size: 14px;"></i>
+                                <% } %>
+                                <span data-content="<%= sublink %>"><%= sublink %></span>
+                                
+                            </a>
+                        <% } %>
+                    </div>
+                <% } %>
+
+            </div>
         <% } %>
+        <a href="<%- url_for(theme.rss.path) %>" class="navlink-rss">
+                <img src="<%- url_for(theme.rss.icon) %>" alt="<%= 'RSS' %>" height="24" width="24">
+        </a>
     </div>
+    <a href="<%- url_for('search') %>" id="search">
+                <img src="<%- url_for('ico/navbar/search.svg') %>" alt="<%= 'Search' %>" height="24" width="24">
+    </a>
+    
 </nav>

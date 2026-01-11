@@ -3,17 +3,184 @@
     margin: 0.5vh  1.5vw;
     background-color: var(--white);
     box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 1);
-    height: 90px;
+    height: 84px;
+    position: relative;
+    align-items: center;
 
     #title {
+        transform: translateY(-5%);
         font-family: 'Cormorant Garamond', serif;
-        font-size: 30px;
+        font-size: 28px;
         font-weight: 700;
         font-style: italic;
         color: var(--text);
-        margin: 27px 0 18px 8vw;
+        /* margin: 27px 0 18px 8vw; */
+        margin: 0 0 0 6vw;
+        
+    }
+
+    .navlink {
+        /* margin: 31px 0 31px 12vw; */
+        position: absolute;
+        transform: translateX(-50%) translateY(-5%);
+        left: 50%;
+        margin: 0;
+        display: flex;
+        gap: 32px;
+    }
+
+    .nav-item-container {
+        position: relative;
+
+        &:hover .nav-item-submenu {
+            display: flex;
+        }
+
+        &:hover .navlink-item {
+            color: var(--base);
+        }
+        &:hover .fa {
+            color: var(--base);
+        }
+        &:hover .nav-icon {
+            background-color: var(--base);
+        }
+    }
+
+    .nav-item-submenu {
+        display: none;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        position: absolute;
+        background-color: var(--white);
+        box-shadow: 0px 3px 30px 1px rgba(205, 216, 232, 1);
+        top:180%;
+        transform: translateX(-15%);
+        padding: 20px 20px 26px;
+        min-width: 60px;
+        white-space: nowrap;
+        border-radius: 2px;
+        
+        a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text);
+            transition: all 0.2s;
+
+            span {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+
+                &::after {
+                    content: attr(data-content);
+                    font-weight: bold;
+                    height: 0;
+                    overflow: hidden;
+                    visibility: hidden;
+                }
+            }
+
+            &:hover span {
+                font-weight: bold;
+            }
+        }
+
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            height: 40px;
+            width: 100%;
+            left: 0;
+            background: transparent
+        }
+
+        /*小三角*/
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent var(--white) transparent;
+    }
     }
 
 
+    .navlink-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none; 
+        font-family: 'Noto Serif SC', serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--text);
+        white-space: nowrap; /* 防止自动换行 */
+        position: relative;
+        transition: all 0.2s;
+
+        .fa {
+            color: rgb(59, 59, 59); 
+            transform: translateY(24%);
+            font-size: 12px
+            transition: all 0.2s;
+        }
+
+        .nav-icon {
+            width: 17px;
+            height: 17px;
+            background-color: var(--text);
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            transform: translateY(.75px);
+            transition: all 0.2s;
+        }
+
+        
+        
+    }
+
+    .navlink-rss {
+        position: absolute;
+        left: 100%;
+        margin-left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-decoration: none; 
+        font-family: 'Noto Serif SC', serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text);
+    }
+
+    .navlink-item span {
+        margin-left: 5px;
+    }
+
+    #search {
+        position: absolute;
+        right: 3vw;
+        top: 50%;
+        transform: translateY(-38%);
+    }
 }
 

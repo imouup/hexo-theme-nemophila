@@ -1,12 +1,16 @@
-<nav class="navbar">
+ <% 
+    let navtheme = className || '';
+ %>
+
+<nav class="navbar <%= navtheme %>">
     <a href="<%- url_for('/') %>" style="text-decoration: none;">
-        <h1 id="title">Nemophila</h1> 
+        <h1 class="title <%= navtheme %>">Nemophila</h1> 
     </a>
-    <div class="navlink">
+    <div class="navlink <%= navtheme %>">
         <% for (let link in theme.menu) { %>
-            <div class="nav-item-container">
-                <a href="<%- url_for(theme.menu[link].path) %>" class="navlink-item">
-                    <div class="nav-icon" 
+            <div class="nav-item-container <%= navtheme %>">
+                <a href="<%- url_for(theme.menu[link].path) %>" class="navlink-item <%= navtheme %>">
+                    <div class="nav-icon <%= navtheme %>" 
                         style="-webkit-mask-image: url('<%- url_for(theme.menu[link].icon) %>'); mask-image: url('<%- url_for(theme.menu[link].icon) %>');">
                      </div>
                     <span><%= link %></span>
@@ -18,7 +22,7 @@
                 </a>
                 
                 <% if (theme.menu[link].submenu) { %>
-                    <div class="nav-item-submenu">
+                    <div class="nav-item-submenu <%= navtheme %>">
                         <% for (let sublink in theme.menu[link].submenu) { %>
                             <% let path = ""; %>
                             <% let item = theme.menu[link].submenu[sublink]; %>
@@ -40,12 +44,16 @@
 
             </div>
         <% } %>
-        <a href="<%- url_for(theme.rss.path) %>" class="navlink-rss">
-                <img src="<%- url_for(theme.rss.icon) %>" alt="<%= 'RSS' %>" height="24" width="24">
+        <a href="<%- url_for(theme.rss.path) %>" class="navlink-rss <%= navtheme %>">
+            <div class="nav-icon <%= navtheme %>" 
+                style="-webkit-mask-image: url('<%- url_for(theme.rss.icon) %>'); mask-image: url('<%- url_for(theme.rss.icon) %>');">
+            </div>
         </a>
     </div>
-    <a href="<%- url_for('search') %>" id="search">
-                <img src="<%- url_for('ico/navbar/search.svg') %>" alt="<%= 'Search' %>" height="24" width="24">
+    <a href="<%- url_for('search') %>" class="search <%= navtheme %>">
+        <div class="nav-icon <%= navtheme %>" 
+            style="-webkit-mask-image: url('<%- url_for('ico/navbar/search.svg') %>'); mask-image: url('<%- url_for('ico/navbar/search.svg') %>');">
+        </div>
     </a>
     
 </nav>

@@ -1,13 +1,24 @@
 .navbar {
     display: flex;
-    margin: 0.5vh  1.5vw;
+    margin: 0.75vh  1.5vw;
     background-color: var(--white);
-    box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 1);
+    // box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 1);
     height: 84px;
     position: relative;
     align-items: center;
 
-    #title {
+    &.theme--homepage {
+        background-color: transparent;
+        box-shadow: none;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: var(--white);
+            box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45);
+        }
+    }
+
+    .title {
         transform: translateY(-5%);
         font-family: 'Cormorant Garamond', serif;
         font-size: 28px;
@@ -71,12 +82,17 @@
             font-size: 16px;
             font-weight: 400;
             color: var(--text);
-            transition: all 0.2s;
+            transition: all 0.2s;  /* transition默认不继承 */
+
+            i {
+                transition: all 0.1s;
+            }
 
             span {
                 display: inline-flex;
                 flex-direction: column;
                 align-items: center;
+                transition: all 0.1s;
 
                 &::after {
                     content: attr(data-content);
@@ -87,8 +103,11 @@
                 }
             }
 
-            &:hover span {
-                font-weight: bold;
+            /* 鼠标悬停加粗 */
+            &:hover span,
+            &:hover i {
+                text-shadow: none;
+                -webkit-text-stroke: 0.8px currentColor;
             }
         }
 
@@ -170,17 +189,53 @@
         font-size: 16px;
         font-weight: 400;
         color: var(--text);
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--text);
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            transition: all 0.2s;
+        }
+
+        &:hover .nav-icon {
+            background-color: var(--base);
+        }
+
     }
 
     .navlink-item span {
         margin-left: 5px;
     }
 
-    #search {
+    .search {
         position: absolute;
         right: 3vw;
         top: 50%;
         transform: translateY(-38%);
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--text);
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        &:hover .nav-icon {
+            background-color: var(--base);
+        }
     }
 }
 

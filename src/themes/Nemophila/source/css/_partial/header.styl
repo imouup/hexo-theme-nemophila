@@ -1,0 +1,45 @@
+.homepage-header {
+        width: 100%;
+        height: 100vh;
+        background-color: var(--windy);
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+    }
+
+#hi-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    position: absolute;
+    margin: 0;
+    }
+
+#hi {
+    position: absolute;
+    top: 33%;
+    left: 11%;
+    margin: 0;
+    display: flex;
+
+    }
+
+#hiauthor {
+        font-family: Abril Fatface, serif;
+        font-size: 100px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        margin: 0;
+
+        // 防止选中
+        -webkit-user-select: none;
+        user-select: none;
+
+
+        // 渐变效果
+        background-image: linear-gradient(75deg, var(--base) -10%, var(--secondary) 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+
+    }

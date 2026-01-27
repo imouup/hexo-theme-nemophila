@@ -1,1 +1,16 @@
-<%- partial('nav.ejs') %>
+<header class = "homepage-header">
+    <%- partial('nav.ejs', {className: 'theme--homepage'}) %>
+    <div id="hi">
+        <div id="hi-left">
+            <h1 id="hiauthor">Hi,<%= config.author  %>!</h1>
+            <span>
+                <span class="hi-contact"></span>
+            </span>
+        </div>
+        
+    </div>
+
+</header>
+<p>
+    <h1>test</h1>
+</p>

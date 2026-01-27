@@ -31,6 +31,13 @@ menu:
 rss:
     path: /atom.xml
     icon: ico/navbar/rss.svg
+
+contact:
+  'Github': {path: https://github.com/imouup ,icon: /ico/contact/github.svg}
+  'Twitter': {path: https://x.com/iznyaku ,icon: /ico/contact/twitter.svg}
+  'Bilibili': {path: https://space.bilibili.com/438518095 ,icon: /ico/contact/bilibili.svg}
+  'Email': {path: mailto:iznyaku@outlook.com, icon: far fa-envelope}
+
 banner: "images/banner_sky.jpg"
 
 # Content

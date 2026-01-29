@@ -1,0 +1,33 @@
+<div id="tweet">
+    <img src="<%- url_for(theme.aboutme.avatar) %>" alt="Tweet Avatar" id="tweet-avatar" draggable="false">
+    <div id="tweet-content">
+        <div id="tweet-info">
+            <span id="author-name"><%= config.author_chinese %></span>
+            <span id="tweet-time"> Just now  </span>
+        </div>
+        <p id="tweet-text">我们虽然距离很远很远，非常非常的远，但是思念或许真的可以穿越时间和距离。</p>
+    </div>
+    <script>
+        (function() {
+            let apiUrl = "<%- theme.tweet.api || '' %>";
+            if (!apiUrl) return;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    let text = data.hitokoto || data.text || data.content;
+                    let time = data.created_at || data.date || data.time;
+
+                    if (text) {
+                        document.getElementById('tweet-text').innerText = text;
+                    }
+                    if (time) {
+                        document.getElementById('tweet-time').innerText = time;
+                    }
+                })
+                .catch(err => {
+                    console.warn('Tweet API fetch failed:', err);
+                });
+        })();
+    </script>
+</div>

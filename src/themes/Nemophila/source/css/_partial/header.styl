@@ -11,17 +11,20 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    position: absolute;
     margin: 0;
     }
 
 #hi {
     position: absolute;
     top: 33%;
-    left: 11%;
+    width: 100%;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 11vw;
     margin: 0;
     display: flex;
-
+    flex-direction: row;
+    gap: 8vw;
     }
 
 #hiauthor {
@@ -42,4 +45,106 @@
         background-clip: text;
         color: transparent;
 
+    }
+
+#hi-contact-abm {
+    margin: 0;
+    display: flex;
+    gap: 40px;
+    }
+
+
+.hi-contact {
+       display: flex;
+       flex-direction: row; 
+       align-items: center;
+       margin: 0;
+       gap: 32px;
+       padding: 0;
+
+       .contact-item {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-decoration: none;
+           transition: all 0.15s;
+           -webkit-user-drag: none
+
+           &:hover {
+                transform: translateY(-20%) scale(1.05);
+            }
+       }
+
+       // 修正 Bilibili 图标视觉偏低的问题
+       a[title="Bilibili"] .contact-icon {
+           transform: translateY(-1.0px);   
+       }
+
+       a[title="Email"] .contact-icon {
+           transform: translateY(0.5px);   
+       }
+
+       i {
+            font-size: 20px;
+            color: var(--base);
+            -webkit-user-drag: none
+        }
+    }
+
+.aboutme {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        transition: all 0.18s;
+        -webkit-user-drag: none
+
+        &:hover {
+            transform: translateY(-20%) scale(1.05);
+        }
+
+        #aboutme-star {
+            width: 19px;
+            height: 19px;
+            }
+
+        #aboutme-text {
+            font-size: 16px;
+            color: var(--base);
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 500;
+            }
+    }
+
+#nemo {
+        position: absolute;
+        bottom: 3%;
+        left: 50%;
+        height: 56px;
+        width: auto;
+        transform: translateX(-50%) rotate(15deg);
+        user-select: none;
+        -webkit-user-drag: none
+        opacity: 0.8;
+        transition: all 0.3s;
+
+        &:hover {
+            opacity: 1.0;
+            transform: translateX(-50%) translateY(-30%) rotate(15deg) scale(1.05);
+            }
+    }
+
+#hi-right {
+    transform: translateY(24px);
+    transition: all 0.5s ease;
+
+    @media screen and (max-width: 1440px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 1900px) {
+        position: absolute;
+        right: 20vw;
+    }
     }

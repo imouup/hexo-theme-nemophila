@@ -12,7 +12,7 @@ menu:
       '杂谈': {path: /archives/sth/ ,type: page, icon: 'fas fa-pen'}
       '笔记': {path: /archives/note/ ,type: page, icon: 'far fa-note-sticky'}
   Lists:
-    path: /lists/
+    path: 
     icon: ico/navbar/list.svg
     submenu: 
       '番组': {path: /lists/bangumi/ ,type: page, icon: 'fas fa-tv'}
@@ -23,7 +23,7 @@ menu:
     icon: ico/navbar/heart.svg
     submenu: false
   Project:
-    path: /project/
+    path: 
     icon: ico/navbar/coffee.svg
     submenu: 
       'Nemophila': {path: https://github.com/imouup/Nemophila ,type: link}
@@ -37,6 +37,13 @@ contact:
   'Twitter': {path: https://x.com/iznyaku ,icon: /ico/contact/twitter.svg}
   'Bilibili': {path: https://space.bilibili.com/438518095 ,icon: /ico/contact/bilibili.svg}
   'Email': {path: mailto:iznyaku@outlook.com, icon: far fa-envelope}
+
+aboutme:
+  path: /about/
+  avatar: images/avatar.jpg
+
+tweet:
+  api: ''
 
 banner: "images/banner_sky.jpg"
 

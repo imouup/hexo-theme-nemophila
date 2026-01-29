@@ -3,13 +3,30 @@
     <div id="hi">
         <div id="hi-left">
             <h1 id="hiauthor">Hi,<%= config.author  %>!</h1>
-            <span>
-                <span class="hi-contact"></span>
-            </span>
+                <span id="hi-contact-abm">
+                    <span class="hi-contact">
+                        <% for (let name in theme.contact) { %>
+                            <% let item = theme.contact[name]; %>
+                            <a href="<%- url_for(item.path) %>" title="<%= name %>" class="contact-item">
+                                <% if (item.icon && (item.icon.includes('/') || item.icon.includes('.'))) { %>
+                                    <img src="<%- url_for(item.icon) %>" alt="<%= name %>" class="contact-icon" draggable="false">
+                                <% } else { %>
+                                    <i class="<%= item.icon %> contact-icon"></i>
+                                <% } %>
+                            </a>
+                        <% } %>
+                    </span>
+                    <a class="aboutme" href="<%- url_for(theme.aboutme.path) %>">
+                        <img src="<%- url_for('/ico/star.svg') %>" alt="star" id="aboutme-star">
+                        <span id="aboutme-text">About me</span>
+                    </a>
+                </span>
         </div>
-        
+        <div id="hi-right">
+            <%- partial('_widget/tweet.ejs') %>
+        </div>
     </div>
-
+    <img src="/ico/Nemo.svg" alt="Nemophila" id="nemo">
 </header>
 <p>
     <h1>test</h1>

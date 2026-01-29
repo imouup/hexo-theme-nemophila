@@ -9,7 +9,7 @@
     <div class="navlink <%= navtheme %>">
         <% for (let link in theme.menu) { %>
             <div class="nav-item-container <%= navtheme %>">
-                <a href="<%- url_for(theme.menu[link].path) %>" class="navlink-item <%= navtheme %>">
+                <a href="<%- theme.menu[link].path ? url_for(theme.menu[link].path) : 'javascript:void(0)' %>" class="navlink-item <%= navtheme %>">
                     <div class="nav-icon <%= navtheme %>" 
                         style="-webkit-mask-image: url('<%- url_for(theme.menu[link].icon) %>'); mask-image: url('<%- url_for(theme.menu[link].icon) %>');">
                      </div>

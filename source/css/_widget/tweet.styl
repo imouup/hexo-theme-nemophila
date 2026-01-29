@@ -1,0 +1,49 @@
+#tweet {
+    display: flex;
+    gap: 4px;
+    }
+
+#tweet-avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 100%;
+    border: 1px solid var(--secondary);
+    object-fit: cover;
+    -webkit-user-drag: none;
+    margin: 0;
+    }
+
+#tweet-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 16px;
+    transform: translateY(-1.5px);
+    }
+
+#tweet-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    #author-name {
+        font-size: 24px;
+        font-weight: 500;
+        font-family: 'Noto Serif SC', serif;
+        color: var(--base);
+        }
+    #tweet-time {
+        font-size: 14px;
+        font-family: 'Noto Sans SC', sans-serif;
+        font-weight: 400;
+        color: var(--secondary);
+        }
+    }
+
+#tweet-text {
+    font-size: 16px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 400;
+    color: #2F5284;
+    max-width: 400px;
+    overflow-wrap: break-word;
+}

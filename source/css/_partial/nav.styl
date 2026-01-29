@@ -111,8 +111,8 @@
             }
         }
 
-
-        &::before {
+        // submenu透明区域，防止鼠标移出时触发消失
+        &::before {  
             content: "";
             position: absolute;
             top: -40px;
@@ -147,6 +147,7 @@
         color: var(--text);
         white-space: nowrap; /* 防止自动换行 */
         position: relative;
+        z-index: 10;
         transition: all 0.2s;
 
         .fa {

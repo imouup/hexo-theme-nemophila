@@ -43,7 +43,7 @@ aboutme:
   avatar: images/avatar.jpg
 
 tweet:
-  api: ''
+  api: 'https://tweet-api-blog.nyaku.moe/tweet'
 
 banner: "images/banner_sky.jpg"
 

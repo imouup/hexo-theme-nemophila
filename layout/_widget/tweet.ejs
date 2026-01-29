@@ -12,6 +12,23 @@
             let apiUrl = "<%- theme.tweet.api || '' %>";
             if (!apiUrl) return;
 
+            function formatTime(timeStr) {
+                if (!timeStr) return '';
+                const date = new Date(timeStr);
+                const now = new Date();
+                const diff = (now - date) / 1000; // seconds
+
+                if (diff < 60) {
+                    return 'Just now';
+                } else if (diff < 3600) {
+                    return Math.floor(diff / 60) + ' minutes ago';
+                } else if (diff < 86400) {
+                    return Math.floor(diff / 3600) + ' hours ago';
+                } else {
+                    return date.toLocaleString(); // 显示为当地日期和时间
+                }
+            }
+
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
@@ -22,7 +39,7 @@
                         document.getElementById('tweet-text').innerText = text;
                     }
                     if (time) {
-                        document.getElementById('tweet-time').innerText = time;
+                        document.getElementById('tweet-time').innerText = formatTime(time);
                     }
                 })
                 .catch(err => {

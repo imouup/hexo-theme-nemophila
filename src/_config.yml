@@ -106,3 +106,44 @@ deploy:
 
 developer:
   enable: true
+
+jsonContent:
+  meta: true
+  drafts: false
+  file: content.json
+  keywords: undefined
+  dateFormat: undefined
+  pages:
+    title: true
+    slug: true
+    date: true
+    updated: true
+    comments: true
+    path: true
+    link: true
+    permalink: true
+    excerpt: true
+    keywords: false
+    text: true
+    raw: false
+    content: false
+    author: true
+    cover: true
+  posts:
+    title: true
+    slug: true
+    date: true
+    updated: true
+    comments: true
+    path: true
+    link: true
+    permalink: true
+    excerpt: true
+    keywords: false
+    text: true
+    raw: false
+    content: false
+    author: true
+    categories: true
+    tags: true
+    cover: true

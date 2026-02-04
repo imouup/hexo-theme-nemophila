@@ -3,6 +3,7 @@
 @import "_partial/header.styl"
 @import "_partial/footer.styl"
 @import "_widget/tweet.styl"
+@import "_widget/postlist.styl"
 @import "index.styl"
 
 :root{
@@ -13,6 +14,7 @@
   --windy: #F0FAFF;
   --bg: #CDD8E8;
   --white: #FFFFFF;
+  --text2: #2F5284;
  
   --title: 32px;
   --h1: 36px;
@@ -56,6 +58,12 @@
   font-weight: 500
   font-style: normal
 
+  @font-face
+  font-family: 'Noto Serif SC'
+  src: url('fonts/NotoSerifSC-SemiBold.ttf') format('truetype')
+  font-weight: 450
+  font-style: normal
+
 @font-face
   font-family: 'Noto Sans SC'
   src: url('fonts/NotoSansSC-Medium.ttf') format('truetype')
@@ -72,6 +80,12 @@
   font-family: 'Noto Sans SC'
   src: url('fonts/NotoSansSC-Regular.ttf') format('truetype')
   font-weight: 400
+  font-style: normal
+
+@font-face
+  font-family: 'Abhaya Libre'
+  src: url('fonts/AbhayaLibre-Medium.ttf') format('truetype')
+  font-weight: 500
   font-style: normal
 
 // @font-face

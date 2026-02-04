@@ -1,0 +1,121 @@
+<% 
+    const initPosts = (typeof posts !== 'undefined') ? posts : []; // 初始文章列表，在首页、tag页及category页会传入
+    const targetTag = (typeof tag !== 'undefined') ? tag : null;
+    const targetCategory = (typeof category !== 'undefined') ? category : null;
+%> 
+
+<section id="postlist-container" 
+        data-filter-tag="<%= targetTag %>" 
+        data-filter-category="<%= targetCategory %>"
+        data-per_page="<%= config.index_generator.per_page %>">
+    <div id="postlist-header">
+    <span>
+        <div id="star"></div>
+        <h3 id="title"><%= title %></h3>
+    </span>
+    <hr>
+    </div>
+    <article id="postlist">
+        <% if(initPosts && initPosts.length > 0) { %>
+            <% initPosts.forEach( post => { %>
+                 <section class="post-card">
+                    <!-- 文章封面处理 -->
+                    <% let coverpath; %>
+                    <% if (post.cover) { %>
+                        <% coverpath = url_for(post.cover); %>
+                    <% } else { %>
+                        <% coverpath = url_for('/images/article_banner/banner1.jpg'); %>
+                    <% } %>
+                    <img src = "<%- coverpath %>" alt="banner" class="post-banner">
+                    <!-- 文章信息 -->
+                    <section class="post-info">
+                        <span class="post-time">
+                            <div class="post-time-icon"></div>
+                            <h5>发布于 <%= post.date.format('YYYY-MM-DD') %></h5>
+                        </span>
+                        <a href="<%= url_for(post.path) %>" class="post-card-link">
+                            <h3 class="post-title"><%= post.title %></h3>
+                        </a>
+                        <span class="post-view post-comment-num post-category">
+                            <span class="post-view">
+                                <div class="post-view-icon"></div>
+                                <h5>112358 人读过</h5>
+                            </span>
+                            <span class="post-comment-num">
+                                <div class="post-comment-num-icon"></div>
+                                <h5>112 条评论</h5>
+                            </span>
+                            <span class="post-category">
+                                <% if(post.categories && post.categories.length > 0) { %>
+                                <div class="post-category-icon"></div>
+                                <h5 class="post-category-list">
+                                    <% post.categories.each(function(cate, index) { %>
+                                    <a href="<%= url_for(cate.path) %>"><%= cate.name %></a>
+                                    <% if (index < post.categories.length - 1) { %>, <% } %>
+                                    <% }) %> 
+                                </h5>
+                                <% } %>
+                            </span>
+
+                        </span>
+                        <p>
+                            <%= strip_html(post.excerpt) %>
+                        </p>
+                    </section>
+                    
+                </section>
+                <hr>
+            <% }) %>
+        <% } %>
+    </article>
+    <div id="previous-btn-container">
+        <button id="previous-btn">Previous</button>
+        <h5 id="previous-no-more">没有更多了 ^_^</h5>
+    </div>
+</section>
+
+
+<!-- 模板，用于js -->
+ <template id="post-template">
+  <section class="post-card fade-in">
+    
+    <img src="" alt="banner" class="post-banner">
+
+    <section class="post-info">
+      
+      <span class="post-time">
+        <div class="post-time-icon"></div>
+        <h5 class="post-date-text"></h5> </span>
+
+      <a href="" class="post-card-link">
+        <h3 class="post-title"></h3> </a>
+
+      <span class="post-view post-comment-num post-category">
+        
+        <span class="post-view">
+          <div class="post-view-icon"></div>
+          <h5>112358 人读过</h5>
+        </span>
+
+        <span class="post-comment-num">
+          <div class="post-comment-num-icon"></div>
+          <h5>112 条评论</h5>
+        </span>
+
+        <span class="post-category" style="display: none;">
+          <div class="post-category-icon"></div>
+          <h5 class="post-category-list">
+            </h5>
+        </span>
+
+      </span>
+
+      <p class="post-excerpt"></p>
+
+    </section>
+  </section>
+</template>
+
+<%- js('js/previous_btn.js') %>
+
+<!-- TODO: 添加加载时向上漂浮的动画 -->

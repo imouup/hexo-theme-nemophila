@@ -3,4 +3,11 @@
     <meta charset="UTF-8">
     <%- css('css/style.css') %>
     <%- css('css/all.min.css') %>
+    <script>
+        let HEXO_SETTINGS = {
+            root: "<%- config.root %>", 
+            url: "<%- config.url %>",
+            author: "<%- config.author %>"
+        };
+    </script>
 </head>

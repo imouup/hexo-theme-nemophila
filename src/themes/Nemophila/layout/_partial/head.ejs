@@ -9,5 +9,12 @@
             url: "<%- config.url %>",
             author: "<%- config.author %>"
         };
+
+        let THEME_SETTINGS = {
+            lazyload: {
+                enable: <%- theme.lazyload && theme.lazyload.enable ? 'true' : 'false' %>,
+                loading_img: "<%- theme.lazyload && theme.lazyload.loading_img ? theme.lazyload.loading_img : '/images/yachiyo_loading_640.webp' %>"
+            },
+            };        
     </script>
 </head>

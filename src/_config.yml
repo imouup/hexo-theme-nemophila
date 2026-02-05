@@ -112,7 +112,7 @@ jsonContent:
   drafts: false
   file: content.json
   keywords: undefined
-  dateFormat: undefined
+  dateFormat: 'YYYY-MM-DD'
   pages:
     title: true
     slug: true

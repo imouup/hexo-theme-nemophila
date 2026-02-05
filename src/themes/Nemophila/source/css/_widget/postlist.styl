@@ -84,6 +84,13 @@
         transform: translateX(-50%) translateY(-6px);
         margin: 0;
         overflow: visible;
+
+        // 线条出现动画
+        opacity: 0;
+        &.animate {
+            animation: lineFadeIn 0.6s ease-out forwards;
+            animation-delay: 0.3s;
+            }
         
     }
 
@@ -118,6 +125,13 @@
             background-color: var(--white);
             box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.6);
         }
+
+        // 卡片出现动画
+        opacity: 0;
+        &.animate {
+            animation: cardFadeUp 0.6s ease-out forwards;
+            }
+
          
     }
     .post-banner {
@@ -340,3 +354,28 @@
     }
 
 }
+
+// 卡片出现动画
+@keyframes cardFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
+@keyframes lineFadeIn {
+    from {
+        opacity: 0;
+        width: 0;
+    }
+    to {
+        opacity: 1;
+        width: 99%;
+    }
+    }
+

@@ -1,0 +1,11 @@
+<footer id="footer">
+    <img src="/ico/Nemo.svg" alt="Nemophila" id="nemo-footer">
+    <p>Theme <strong>Nemophila</strong></p>
+    <p>Powered by Love from izNyaku</p>
+    <div id="footer-space"></div>
+    <p>© 2021 - <%- new Date().getFullYear() %> <%= config.author %>. All rights reserved.</p>
+    <% if (theme.icp_license.icp_license_link !== '') { %>
+         <a href="<%= theme.icp_license.icp_license_link %>"><%= theme.icp_license.text %></a>
+    <% } %>
+       
+</footer>

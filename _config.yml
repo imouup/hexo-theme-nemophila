@@ -51,6 +51,10 @@ banner: "images/banner_sky.jpg"
 excerpt_link: Read More
 fancybox: true
 
+icp_license: 
+  icp_license_link: "https://icp.gov.moe/?keyword=20212022"
+  text: "萌ICP备20212022号"
+
 # # Footer
 # copyright: |-
 #   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>

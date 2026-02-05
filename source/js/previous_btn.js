@@ -7,6 +7,38 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     if (!wrapper || !container || !template || !btn) return;
 
+    // 动画
+    const observerOptions = {
+        root: null, 
+        rootMargin: '0px',
+        threshold: 0.1 // 只要露出 10% 就触发
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 给卡片加动画
+                entry.target.classList.add('animate');
+                
+                // 找到卡片紧跟的那个 hr，也加动画
+                const nextHr = entry.target.nextElementSibling;
+                if (nextHr && nextHr.tagName === 'HR') {
+                    nextHr.classList.add('animate');
+                }
+
+                // 动画只播放一次，播放完就取消监听
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // 封装一个“监听新元素”的函数
+    const observeNewItems = () => {
+        const cards = container.querySelectorAll('.post-card:not(.animate)');
+        cards.forEach(card => observer.observe(card));
+    };
+
+
     // 读取筛选条件和设置
     const filterTag = wrapper.getAttribute('data-filter-tag');
     const filterCategory = wrapper.getAttribute('data-filter-category');
@@ -16,6 +48,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
     let activeList = [];
     let loadedCount = container.querySelectorAll('.post-card').length; // 已加载文章数
     let isDataFetched = false;
+
+    observeNewItems(); // 监听初始加载的文章卡片
 
     // 日期格式化函数
     const formatDate = dateString => {
@@ -117,6 +151,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
             container.appendChild(clone);
             const hr = document.createElement('hr');
             container.appendChild(hr);
+
+            observeNewItems(); // 监听新添加的文章卡片
 
             loadedCount += posts.length;
         });

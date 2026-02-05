@@ -49,7 +49,7 @@ banner: "images/banner_sky.jpg"
 
 lazyload:
   enable: true
-  loading_img: /images/yachiyo_loading_640.webp
+  loading_img: /images/yachiyo_loading2_640.webp
 
 # Content
 excerpt_link: Read More
@@ -58,6 +58,8 @@ fancybox: true
 icp_license: 
   icp_license_link: "https://icp.gov.moe/?keyword=20212022"
   text: "萌ICP备20212022号"
+
+back_to_top_img: images/yachiyo.PNG 
 
 # # Footer
 # copyright: |-

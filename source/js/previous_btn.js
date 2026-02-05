@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const btn = document.getElementById('previous-btn');
     const nomore = document.getElementById('previous-no-more');
     const template = document.getElementById('post-template');
+    const isLazyLoadEnabled = (typeof THEME_SETTINGS !== 'undefined' && THEME_SETTINGS.lazyload && THEME_SETTINGS.lazyload.enable); 
 
     if (!wrapper || !container || !template || !btn) return;
 
@@ -110,11 +111,22 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
             // 封面
             const img = clone.querySelector('.post-banner');
+
+            let realSrc; 
             if (post.cover) {
-            img.src = parseUrl(post.cover); 
+                realSrc = parseUrl(post.cover); 
             } else {
-                img.src = '/images/article_banner/banner1.jpg'; // 默认图
+                realSrc = '/images/article_banner/banner1.jpg'; // 默认图
             }
+            
+            if (isLazyLoadEnabled) {  // 使用lazyload
+                img.setAttribute('data-src', realSrc);
+                img.src = THEME_SETTINGS.lazyload.loading_img; // 占位图
+                img.classList.add('lazyload'); // 加入lazyload标识
+            } else {  // 直接加载
+                img.src = realSrc;
+            }
+            
 
             // 时间
             clone.querySelector('.post-date-text').textContent = '发布于 ' + formatDate(post.date);
@@ -155,6 +167,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
             observeNewItems(); // 监听新添加的文章卡片
 
             loadedCount += posts.length;
+
+            if (window.observeImages) {  // 触发lazyload监听
+                window.observeImages();
+            }
+
         });
 
     }

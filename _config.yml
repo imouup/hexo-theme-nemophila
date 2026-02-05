@@ -47,6 +47,10 @@ tweet:
 
 banner: "images/banner_sky.jpg"
 
+lazyload:
+  enable: true
+  loading_img: /images/yachiyo_loading_640.webp
+
 # Content
 excerpt_link: Read More
 fancybox: true

@@ -3,5 +3,10 @@
     <%- partial('_partial/head') %>
     <body>  
     <%- body %>
+    
+    <% if (theme.lazyload && theme.lazyload.enable) { %>
+        <%- js('js/lazyload.js') %>  <!-- lazyload -->
+    <% } %>
+    
     </body>
 </html>

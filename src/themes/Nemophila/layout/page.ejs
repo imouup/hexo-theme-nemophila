@@ -1,0 +1,17 @@
+<header class="page-header">
+    <% if (page.cover) { %>
+        <div class="page-header-cover" style="background-image: url('<%- url_for(page.cover) %>');"></div>
+    <% } %>
+    <%- partial('_partial/nav.ejs',{className: ''}) %>
+    <h1 class="page-title <%= page.cover ? 'need-shadow' : '' %>"><%= page.title %></h1>
+
+</header>
+<div class="article-content-container">
+    <article class="article-content">
+        <%- page.content %>
+    </article>
+</div>
+
+<!-- 引入代码块所用js -->
+<%- js('js/addImgTitle.js') %>
+<%- js('js/highlight.js')  %> 

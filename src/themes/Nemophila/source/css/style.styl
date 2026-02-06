@@ -1,11 +1,13 @@
 @import "_partial/nav.styl"
-@import "_partial/post.styl"
 @import "_partial/header.styl"
 @import "_partial/footer.styl"
 @import "_widget/tweet.styl"
 @import "_widget/postlist.styl"
 @import "index.styl"
 @import "_widget/up.styl"
+@import "post.styl"
+@import "page.styl"
+@import "_widget/toc.styl"
 
 :root{
   --base: #6C9AE4;
@@ -17,6 +19,8 @@
   --white: #FFFFFF;
   --text2: #2F5284;
   --text3: #375DB3;
+  --pagetitle: #223D78;
+  --codeblock: hsla(199, 69%, 87%, 0.3);
  
   --title: 32px;
   --h1: 36px;
@@ -35,12 +39,14 @@
   src: url('fonts/CormorantGaramond-BoldItalic.ttf') format('truetype')
   font-weight:  700
   font-style: italic
+  font-display: block
 
 @font-face
   font-family: 'Abril Fatface'
   src: url('fonts/AbrilFatface-Regular.ttf') format('truetype')
   font-weight: 400
   font-style: normal
+  font-display: block
 
 @font-face
   font-family: 'Noto Serif SC'
@@ -53,6 +59,7 @@
   src: url('fonts/NotoSerifSC-Regular.ttf') format('truetype')
   font-weight: 400
   font-style: normal
+  
 
 @font-face
   font-family: 'Noto Serif SC'
@@ -63,8 +70,9 @@
   @font-face
   font-family: 'Noto Serif SC'
   src: url('fonts/NotoSerifSC-SemiBold.ttf') format('truetype')
-  font-weight: 450
+  font-weight: 600
   font-style: normal
+  font-display: block
 
 @font-face
   font-family: 'Noto Sans SC'
@@ -89,6 +97,7 @@
   src: url('fonts/AbhayaLibre-Medium.ttf') format('truetype')
   font-weight: 500
   font-style: normal
+  font-display: block
 
 @font-face
   font-family: 'Abhaya Libre'

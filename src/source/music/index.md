@@ -1,17 +1,17 @@
-title: Markdown Style test
-date: 2018-7-24 23:31:06
-tags:
+title: music
+date: 2026-02-06 17:01:16
 
-- Foo
-- Bar
+cover: images/article_banner/banner4.png
 
 ---
 
+
+
+
+
 This post is originated from [here](https://gist.github.com/apackeer/4159268) and is used for testing markdown style. This post contains nearly every markdown usage. Make sure all the markdown elements below show up correctly.
 
-<!-- more -->
-
--------
+---
 
 ## Headers
 
@@ -47,10 +47,8 @@ Alt-H2
 Alternatively, for H1 and H2, an underline-ish style:
 
 Alt-H1
-======
 
 Alt-H2
-------
 
 ## Emphasis
 
@@ -64,11 +62,11 @@ Combined emphasis with **asterisks and _underscores_**.
 Strikethrough uses two tildes. ~~Scratch this.~~
 ```
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+Emphasis, aka italics, with *asterisks* or *underscores*.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Strong emphasis, aka bold, with **asterisks** or **underscores**.
 
-Combined emphasis with **asterisks and _underscores_**.
+Combined emphasis with **asterisks and *underscores***.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
 
@@ -103,7 +101,7 @@ And more text.
 
 2. Another item
    
-   * Unordered sub-list.
+   - Unordered sub-list.
 
 3. Actual numbers don't matter, just that it's a number
    
@@ -116,9 +114,12 @@ And more text.
    To have a line break without a paragraph, you will need to use two trailing spaces.  
    Note that this line is separate, but within the same paragraph.  
    (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-* Unordered list can use asterisks
+- Unordered list can use asterisks
+
 - Or minuses
-+ Or pluses
+
+- Or pluses
+
 - Paragraph In unordered list
   
   For example like this.
@@ -132,7 +133,7 @@ And more text.
 <p>To reboot your computer, press <kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>del</kbd>.</p>
 ```
 
-<p>To reboot your computer, press <kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>del</kbd>.</p>
+To reboot your computer, press ctrl+alt+del.
 
 ```markdown
 <dl>
@@ -144,14 +145,14 @@ And more text.
 </dl>
 ```
 
-<dl>
-    <dt>Definition list</dt>
-    <dd>Is something people use sometimes.</dd>
+Definition list
 
-    <dt>Markdown in HTML</dt>
-    <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+Is something people use sometimes.
 
-</dl>
+```
+<dt>Markdown in HTML</dt>
+<dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+```
 
 ## Links
 
@@ -179,19 +180,15 @@ Some text to show that the reference links can follow later.
 
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
+[I'm a reference-style link](https://hexo.io)
 
 [I'm a relative reference to a repository file](../blob/master/LICENSE)
 
-[You can use numbers for reference-style link definitions][1]
+[You can use numbers for reference-style link definitions](https://hexo.io/docs/)
 
-Or leave it empty and use the [link text itself]
+Or leave it empty and use the [link text itself](https://hexo.io/api/)
 
 Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://hexo.io
-[1]: https://hexo.io/docs/
-[link text itself]: https://hexo.io/api/
 
 ## Images
 
@@ -214,14 +211,7 @@ Inline-style:
 
 ![alt text](https://hexo.io/icon/favicon-196x196.png "Logo Title Text 1")
 
-Reference-style:
-![alt text][logo]
-
-[logo]: https://hexo.io/icon/favicon-196x196.png "Logo Title Text 2"
-
-## 
-
-![testphoto](images/article_banner/banner2.jpg)
+Reference-style: ![alt text](https://hexo.io/icon/favicon-196x196.png "Logo Title Text 2")
 
 ## Code and Syntax Highlighting
 
@@ -273,7 +263,7 @@ Colons can be used to align columns.
 ```
 
 | Tables        | Are           | Cool |
-| ------------- |:-------------:| ----:|
+| ------------- | ------------- | ---- |
 | col 3 is      | right-aligned |      |
 | col 2 is      | centered      |      |
 | zebra stripes | are neat      |      |
@@ -325,11 +315,11 @@ Underscores
 
 Hyphens
 
-***
+---
 
 Asterisks
 
-___
+---
 
 Underscores
 
@@ -351,7 +341,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 
------
+---
 
 ```markdown
 This is a regular paragraph.
@@ -367,11 +357,7 @@ This is another regular paragraph.
 
 This is a regular paragraph.
 
-<table>
-    <tr>
-        <td>Foo</td>
-    </tr>
-</table>
+Foo
 
 This is another regular paragraph.
 
@@ -387,10 +373,8 @@ Pure markdown version:
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ARted4RniaU/0.jpg)](https://www.youtube.com/watch?v=ARted4RniaU)
 ```
 
-<a href="https://www.youtube.com/watch?feature=player_embedded&v=ARted4RniaU
-" target="_blank"><img src="https://img.youtube.com/vi/ARted4RniaU/0.jpg"
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ARted4RniaU/0.jpg)](https://www.youtube.com/watch?feature=player_embedded&v=ARted4RniaU)
 
 Pure markdown version:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ARted4RniaU/0.jpg)](https://www.youtube.com/watch?v=ARted4RniaU)
+[](https://www.youtube.com/watch?v=ARted4RniaU)

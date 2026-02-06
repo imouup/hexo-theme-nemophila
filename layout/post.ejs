@@ -18,9 +18,9 @@
 </header>
 <div class="article-content-container">
     <article class="article-content">
+        <%- partial('_widget/toc.ejs') %>
         <%- page.content %>
     </article>
-    <%# partial('_widget/toc.ejs') %>
 </div>
 
 
@@ -28,4 +28,5 @@
 <!-- 引入代码块所用js -->
 <%- js('js/addImgTitle.js') %>
 <%- js('js/highlight.js')  %> 
+<%- js('js/toc.js')  %>
 <%# js('js/toc.js')  %>

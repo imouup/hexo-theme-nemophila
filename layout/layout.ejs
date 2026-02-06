@@ -3,11 +3,15 @@
     <%- partial('_partial/head') %>
     <body>  
     <%- body %>
+    <%- partial('_partial/footer') %>
 
     <% if (theme.lazyload && theme.lazyload.enable) { %>
         <%- js('js/lazyload.js') %>  <!-- lazyload -->
     <% } %>
+    
     <%- partial('_widget/up')  %>
     <%- js('js/up.js') %>
+    
+    
     </body>
 </html>

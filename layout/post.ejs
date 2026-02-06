@@ -1,0 +1,31 @@
+<header class="article-header">
+    <% if (page.cover) { %>
+        <div class="article-header-cover" style="background-image: url('<%- url_for(page.cover) %>');"></div>
+    <% } %>
+
+    <%- partial('_partial/nav.ejs',{className: ''}) %>
+    <div class="article-info <%= page.cover ? 'need-shadow' : '' %>">
+        <h1 class="article-title"><%= page.title %></h1>
+        <span class="article-author-avatar-date-readtime">
+            <img src="<%- url_for(theme.aboutme.avatar) %>" alt="Article author's Avatar" draggable="false" class="article-author-avatar no-lazyload">
+            <h2 class="article-author-name"><%= config.author_name_in_mother_tongue %></h2>
+            ·
+            <time class="article-date" datetime="<%= page.date.toISOString() %>"><%= page.date.format('YYYY-MM-DD') %></time>
+            ·
+            <span class="article-readtime">345次阅读</span>
+        </span>
+    </div>
+</header>
+<div class="article-content-container">
+    <article class="article-content">
+        <%- page.content %>
+    </article>
+    <%# partial('_widget/toc.ejs') %>
+</div>
+
+
+
+<!-- 引入代码块所用js -->
+<%- js('js/addImgTitle.js') %>
+<%- js('js/highlight.js')  %> 
+<%# js('js/toc.js')  %>

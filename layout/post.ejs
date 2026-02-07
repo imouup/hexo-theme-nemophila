@@ -21,7 +21,25 @@
         <%- partial('_widget/toc.ejs') %>
         <%- page.content %>
     </article>
+    <% if (theme.cclicense && theme.cclicense.enable) { %>
+        <div class="article-cclicense">
+            <a class="article-cclicense-text" href="<%= theme.cclicense.url ? theme.cclicense.url : 'https://creativecommons.org' %>"><%= theme.cclicense.type %></a>
+        </div>
+    <% } %>
+    <% if (page.next) { %>
+        <div class="article-next" 
+            <% if (page.next && page.next.cover) { %>
+                style="--bg-url: url('<%- url_for(page.next.cover) %>');"
+            <% } %>>
+            <a class="article-next-link-card" href="<%- url_for(page.next.path) %>">
+                <p class="article-next-text1">Next Post</p>
+                <p class="article-next-title"><%= page.next.title %></p>
+            </a>
+        </div>
+    <% } %>
+        
 </div>
+
 
 
 

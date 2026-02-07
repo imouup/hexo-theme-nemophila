@@ -394,3 +394,17 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 Pure markdown version:
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ARted4RniaU/0.jpg)](https://www.youtube.com/watch?v=ARted4RniaU)
+
+
+
+## LaTex
+
+single line equation:
+
+$$
+V(t)=min_{u_t}\{V(t-1) + J(t) \}
+$$
+
+
+
+inline equation: $E=mc^2$

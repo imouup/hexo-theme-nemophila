@@ -1,0 +1,211 @@
+.music-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    color: var(--white);
+    z-index: 1;
+
+}
+
+.music-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-image: var(--music-bg-img);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: blur(80px) brightness(0.75) saturate(120%);
+    transform: scale(1.1);
+    z-index: -1;      
+}
+
+.music-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    //background: rgba(0, 0, 0, 0.1);
+}
+
+#music-page #aplayer {
+    position: absolute;
+    top: 25%;
+    left: 50%
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 1200px;
+    transform: none;
+    z-index: 10;
+    color: var(--text);
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+
+    .aplayer-body {
+        margin: 0 auto;
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+
+            
+    }
+
+    .aplayer-pic {
+        width: 360px;
+        height: 360px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 0px 4px 29.8px 3px rgba(54, 54, 54, 0.45);
+        border-radius: 15px;
+
+    }
+
+    .aplayer-info {
+        margin: 0;
+        position: relative;
+        height: fit-content; 
+        border: none;  
+    }
+
+    
+
+    .aplayer-lrc {
+        width: fit-content;
+        height: 100vh;
+        position: absolute;
+        overflow: hidden;
+        top: calc(-25vh - 360px);
+        left: 480px;
+        overflow-y: auto !important;
+        scroll-behavior: smooth !important;
+        scroll-behavior: smooth !important;
+
+        &::-webkit-scrollbar {  //隐藏滚动条
+            width: 0 !important;
+            display: none !important;
+        }
+        
+
+        &::before {
+            display: none;    
+        }
+
+        &::after {
+            display: none;    
+        }
+
+        .aplayer-lrc-current {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.5 !important;
+            margin: 4px;
+            height: fit-content !important;
+        }
+        p {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 2.0 !important;
+            margin: 4px;
+            height: fit-content !important;
+            white-space: nowrap;
+
+        }
+
+        
+
+    }
+
+    // .aplayer-lrc-contents {
+    //     transform: translateY(27vh) !important;    
+    // }
+
+    .aplayer-music {
+            margin: 4px 8px;
+            height: fit-content;
+
+        }
+    .aplayer-music {
+        font-family: 'Noto Sans SC', sans-serif;
+        font-size: 24px;
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+    }
+    .aplayer-title {
+        font-family: 'Noto Sans SC', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--white);
+    }
+    .aplayer-author {
+        font-family: 'Noto Sans SC', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--white);
+        opacity:0.75;
+        margin-left: 8px;
+        text-indent: -1.6ch;
+    }
+
+    .aplayer-controller {
+        margin: 0;
+        width: 360px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+    }
+
+    .aplayer-bar {
+        z-index: 10;
+    }
+
+    .aplayer-bar-wrap {
+        width: 100% !important; 
+        padding: 7px 0;   
+    }
+
+    .aplayer-list {
+        width: 360px;
+        margin: 32px 0 0 8px;
+        border: none;
+
+        ol {
+            border-radius: 5px;
+        }
+        .aplayer-list-light {
+            background: rgba(255, 255, 255, 0.75);
+            border: none;
+        }
+        .aplayer-list-cur {
+            display: none;  
+        }
+       
+    }
+
+    .aplayer-notice {
+        display: none;    
+    }
+
+    
+}
+
+

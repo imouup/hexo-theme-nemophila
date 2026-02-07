@@ -37,17 +37,21 @@
             </a>
         </div>
     <% } %>
-    <div id="waline"></div>
-        <script type="module">
-            import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+    <% if (theme.waline && theme.waline.enable) { %>
+        <div id="waline"></div>
+            <script type="module">
+                import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
-            init({
-            el: '#waline',
-            serverURL: 'https://waline-test.mouup.top',
-            });
-  </script>
-</div>
+                init({
+                el: '#waline',
+                serverURL: '<%= theme.waline.serverURL %>',
+                });
+            </script>
+        </div>
+    <% } %>
+        
 
+<!-- TODO: 整理waline -->
 
 
 

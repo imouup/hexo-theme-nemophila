@@ -1,0 +1,97 @@
+<div id= "music-page" class="music-container"
+    style="--music-bg-img: url('<%- url_for('images/music_cover_test.jpg') %>');">
+    <%- partial('_partial/nav', { className: "theme--music" })  %>
+    <div id="aplayer" class="music-player"></div>
+</div>
+
+<!-- 令footer消失 -->
+<style>
+    #footer {
+        display: none;
+    }
+</style>
+<!-- Aplayer -->
+<%- js('js/APlayer.min.js')  %>
+
+<script>
+    const musicPlayer = new APlayer({
+        container: document.getElementById('aplayer'),
+        lrcType: 3,
+        audio: [
+            {
+                name: 'Remember',
+                artist: 'Yachiyo',
+                url: '<%- url_for("assets/Remember.flac") %>',
+                cover: '<%- url_for("images/music_cover_test.jpg") %>',
+                lrc: '<%- url_for("assets/Remember.lrc") %>'
+            },
+            {
+                name: 'Remember',
+                artist: 'Yachiyo',
+                url: '<%- url_for("assets/Remember.flac") %>',
+                cover: '<%- url_for("images/music_cover_test.jpg") %>',
+                lrc: '<%- url_for("assets/Remember.lrc") %>'
+            }
+        ]
+
+
+    });
+
+    //修正歌词滚动函数
+    if (musicPlayer.lrc) {
+        
+
+        musicPlayer.lrc.update = function(currentTime = this.player.audio.currentTime) {
+
+            if (
+                this.index > this.current.length - 1 ||
+                currentTime < this.current[this.index][0] ||
+                (!this.current[this.index + 1] || currentTime >= this.current[this.index + 1][0])
+            ) {
+                for (let i = 0; i < this.current.length; i++) {
+                    if (
+                        currentTime >= this.current[i][0] &&
+                        (!this.current[i + 1] || currentTime < this.current[i + 1][0])
+                    ) {
+                        this.index = i;
+
+                        let currentLine = this.container.getElementsByTagName("p")[this.index];
+
+                        if (currentLine) {
+                            let preLine = this.container.getElementsByClassName("aplayer-lrc-current")[0];
+                            if (preLine) preLine.classList.remove("aplayer-lrc-current");
+                            currentLine.classList.add("aplayer-lrc-current");
+
+                            // 计算滚动高度
+                            let scrollContainer = this.container.parentElement //.aplayer-lrc
+                            let contentContainer = this.container; //.aplayer-lrc-contents
+
+                            let viewportHeight = scrollContainer.clientHeight;
+                            let offsetTop = currentLine.offsetTop;
+                            let lineHeight = currentLine.clientHeight;
+
+                            let translateY = -offsetTop + (viewportHeight/3) - (lineHeight/2);
+
+                            contentContainer.style.transform = `translateY(${translateY}px)`;
+                            contentContainer.style.webkitTransform = `translateY(${translateY}px)`
+
+
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+
+
+        }
+
+    }
+
+
+
+</script>
+

@@ -111,18 +111,6 @@ twitter:
 fb_admins:
 fb_app_id:
 
-# valine comment system. https://valine.js.org
-valine:
-  enable: false # if you want use valine,please set this value is true
-  appId:  # leancloud application app id
-  appKey:  # leancloud application app key
-  notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
-  verify: false # valine verify code (true/false)
-  pageSize: 10 # comment list page size
-  avatar: mm # gravatar style https://valine.js.org/#/avatar
-  lang: zh-cn # i18n: zh-cn/en
-  placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
-  guest_info: nick,mail,link #valine comment header info
 
 markdown_it_plus:
   render:
@@ -139,3 +127,15 @@ markdown_it_plus:
     - plugin:
         name: markdown-it-mark
         enable: true
+
+feed:
+  type: atom           # 指定生成类型为 atom
+  path: atom.xml       # 生成的文件路径，访问地址为 yoursite.com/atom.xml
+  limit: 0            # 最多生成的文章数量，0 为不限制
+  hub:                 # PubSubHubbub 协议中心（可选，通常留空）
+  content: true        # 是否在 RSS 中包含文章全文（true 为全文，false 为摘要）
+  content_limit: 140   # 如果 content 设为 false，这里设置摘要的字符限制
+  content_limit_delim: ' ' # 截断摘要时的分隔符
+  order_by: -date      # 排序方式，默认按日期倒序
+  icon: ico/Nemo.svg       # 自定义 Feed 图标（可选）
+  autodiscovery: true  # 是否在页面头部自动添加 Feed 链接标签

@@ -33,10 +33,10 @@ rss:
     icon: ico/navbar/rss.svg
 
 contact:
-  'Github': {path: https://github.com/imouup ,icon: /ico/contact/github.svg}
-  'Twitter': {path: https://x.com/iznyaku ,icon: /ico/contact/twitter.svg}
-  'Bilibili': {path: https://space.bilibili.com/438518095 ,icon: /ico/contact/bilibili.svg}
-  'Email': {path: mailto:iznyaku@outlook.com, icon: far fa-envelope}
+  'Github': {uid: 'imouup',path: 'https://github.com/imouup' ,icon: '/ico/contact/github.svg'}
+  'Twitter': {uid: '@iznyaku',path: 'https://x.com/iznyaku' ,icon: '/ico/contact/twitter.svg'}
+  'Bilibili': {uid: '438518095' ,path: 'https://space.bilibili.com/438518095' ,icon: '/ico/contact/bilibili.svg'}
+  'Email': {uid: 'iznyaku@outlook.com' ,path: 'mailto:iznyaku@outlook.com', icon: far fa-envelope}
 
 aboutme:
   path: /about/

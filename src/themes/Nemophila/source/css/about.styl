@@ -1,0 +1,148 @@
+#about-me-page {
+    font-family: 'Noto Serif SC', serif;    
+}
+
+#about-me-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10vh auto 15vh auto;
+    width: 1096px;
+    gap: 96px;    
+}
+
+#about-me-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;   
+}
+
+#aboue-me-author-container {
+    display: flex;
+    align-items: flex-start; 
+    flex-direction: column;
+    gap: 8px;   
+}
+
+#aboue-me-author-m {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text2); 
+    margin: 0 0 0 16px;   
+}
+
+#aboue-me-author {
+    font-family: 'Noto Sans Serif', sans-serif;
+    font-size: 18px;
+    color: var(--bg);
+    margin: 0 0 0 16px; 
+    padding-bottom: 4px;
+    opacity: 0.6;    
+}
+
+
+#about-me-avatar {
+    width: 360px;
+    height: 360px;
+    onject-fit: cover;
+    border-radius: 0px;
+
+}
+
+#about-me-contact {
+    margin: 8px 0 0 16px;    
+}
+
+.about-me-contact-item {
+    margin: 4px 0 4px 0;
+    display: flex;
+    align-items: center; 
+      
+}
+
+.about-me-contact-item a {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text2);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+
+    p {
+        margin: 0;
+    }
+
+    &:hover {
+        color: var(--base);
+        .about-me-contact-item-icon-svg{
+            background-color: var(--base);
+        }
+        .about-me-contact-item-icon-fa{
+            color: var(--base);
+        }
+
+    }
+
+}
+
+.about-me-contact-item-icon-svg {
+    width: 18px;
+    height: 18px;
+    margin: 0 6px 0 0;
+
+    background-color: var(--text2);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    transform: translateY(1px);
+
+}
+
+.about-me-contact-item-icon-fa {
+    font-size: 14px;
+    margin: 0 6px 0 0;
+
+    transform: translateY(1px);
+       
+}
+
+
+
+.about-me-contact-item-icon-svg[title="Twitter"] {
+    width: 16px;
+    height: 16px;    
+}
+
+.about-me-contact-item-icon-svg[title="Bilibili"] {
+    width: 16px;
+    height: 16px;    
+}
+
+.about-me-contact-item-icon-fa[title="Email"] {
+    font-size: 14px;
+    transform: translateY(2px) translateX(-1px);
+}
+
+#about-me-content {
+    padding: 4px 16px ;
+    border: 1px solid var(--bg);
+    width: 100%;    
+    position: relative;
+
+    p {
+        padding-left: 8px;
+    }
+}
+
+#about-me-content-header {
+    position: absolute;
+    top: 2px;
+    left: 32px;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--bg);
+    font-weight: 400;
+    font-size: 12px; 
+}

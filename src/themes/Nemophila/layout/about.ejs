@@ -1,0 +1,50 @@
+<div id="about-me-page">
+    <%- partial('_partial/nav', {className: 'theme--aboutme'})  %>
+    <section id="about-me-container">
+        <div id="about-me-info">
+            <img src="<%= url_for(theme.aboutme.avatar)  %>" id="about-me-avatar"> 
+            <section id="aboue-me-author-container">
+                <% if (config.author_name_in_mother_tongue) { %>
+                    <p id="aboue-me-author-m"><%= config.author_name_in_mother_tongue  %></p>
+                <% } %>
+                <% if (config.author) { %>
+                    <p id="aboue-me-author">@<%= config.author  %></p>
+                <% } %>
+            </section>
+            <section id="about-me-contact">
+                <div class="about-me-contact-item">
+                    <a title="site" href="../">
+                        <!-- <div class="about-me-contact-item-icon-svg"></div> -->
+                        <i class="fa-solid fa-link about-me-contact-item-icon-fa" title="site"></i>
+                        <p><%= config.url  %></p>
+                    </a>
+                </div>
+                
+                <% for(let name in theme.contact ) { %>
+                    <% let link = theme.contact[name] %>
+                    <div class="about-me-contact-item">
+                        <a title="<%= name  %>" href="<%- url_for(link.path) %>">
+                            <% if (link.icon.startsWith('fa')) { %>
+                                <i class="<%= link.icon %> about-me-contact-item-icon-fa" title="<%= name  %>"></i>
+                            <% } else if (link.icon) { %>
+                                <div title="<%= name  %>" class="about-me-contact-item-icon-svg" 
+                                    style="mask-image: url('<%=  link.icon %>');
+                                    -webkit-mask-image: url('<%=  link.icon %>');
+                                    
+                                    "></div>
+                            <% } %>
+                            
+                            <p><%= link.uid  %></p>
+                        </a> 
+
+                    </div>
+                        
+                    <% } %>
+            </section> 
+        </div>
+        <div id="about-me-content" class="article-content">
+            <div id="about-me-content-header">about/index.md</div>
+            <%- page.content  %>
+        </div>
+    </section>
+</div>

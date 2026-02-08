@@ -19,8 +19,7 @@
         display: none;
     }
 </style>
-<!-- Aplayer -->
-<%- js('js/APlayer.min.js')  %>
+
 <!-- Metingjs -->
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
@@ -63,31 +62,40 @@
 
     
     // 初始化Aplayer对象
-    const playerType = '<%= page.player_type %>'
-    if (playerType && playerType === 'aplayer') {
+    const playerType = '<%= page.player_type %>';
+    const audioList = <%- JSON.stringify(page.audio_list || []) %>;
+
+    const urlConvert = (url) =>{
+        if (url) {
+            if (url.startsWith('http') || url.startsWith('//')) {
+                return url;
+            }
+            const cleanUrl = url.replace(/^\/+/, '');
+            let origin = window.location.origin;
+            let finalurl = origin + HEXO_SETTINGS.root + cleanUrl;
+            return finalurl;
+        } 
+        return '';
+        
+    }
+
+    audioList.forEach((audio)=>{
+        audio.url = urlConvert(audio.url);
+        audio.cover = urlConvert(audio.cover);
+        if (audio.lrc) {
+            audio.lrc = urlConvert(audio.lrc);
+        }
+        
+    });
+
+
+    if (playerType && playerType === 'aplayer' && audioList.length>0) {
         console.log('aplayer initialized')
 
     const musicPlayerA = new APlayer({
         container: document.getElementById('aplayer'),
         lrcType: 3,
-        audio: [
-            {
-                name: 'Remember',
-                artist: 'Yachiyo',
-                url: 'https://music.163.com/song/media/outer/url?id=3340112781.mp3',
-                cover: '<%- url_for("images/music_cover_test.jpg") %>',
-                lrc: '<%- url_for("assets/Remember.lrc") %>'
-            },
-             {
-                name: 'Remember',
-                artist: 'Yachiyo',
-                url: 'https://music.163.com/song/media/outer/url?id=3340112781.mp3',
-                cover: '<%- url_for("images/music_cover_test.jpg") %>',
-                lrc: '<%- url_for("assets/Remember.lrc") %>'
-            }
-        
-        ]
-
+        audio: audioList
 
     });
 

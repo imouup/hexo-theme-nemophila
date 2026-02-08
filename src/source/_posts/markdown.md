@@ -410,5 +410,20 @@ $$
 inline equation: $E=mc^2$
 
 ## Aplayer
+<div id="aplayertest"></div>
+<script>
+  const ap = new APlayer({
+    container: document.getElementById('aplayertest'),
+    lrc:3,
+    audio: [{
+        name: 'Remember',
+        artist: 'Yachiyo',
+        url: 'https://music.163.com/song/media/outer/url?id=3340112781.mp3',
+        cover: window.origin + HEXO_SETTINGS.root + 'images/music_cover_test.jpg',
+        lrc: window.origin + HEXO_SETTINGS.root + 'assets/Remember.lrc'
+    }]
+});
+</script>
 
+This is the Aplayer test.
 

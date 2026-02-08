@@ -37,13 +37,11 @@
     //background: rgba(0, 0, 0, 0.1);
 }
 
-#music-page #aplayer {
-    position: absolute;
-    top: 25%;
-    left: 50%
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+#music-page .aplayer {
+    position: relative;
+    left: auto;
+    right: auto;
+    margin: 15vh auto 0 auto;
     width: 1200px;
     transform: none;
     z-index: 10;
@@ -73,7 +71,8 @@
     }
 
     .aplayer-info {
-        margin: 0;
+        margin: 8px 0;
+        padding: 0;
         position: relative;
         height: fit-content; 
         border: none;  
@@ -82,14 +81,13 @@
     
 
     .aplayer-lrc {
-        width: fit-content;
+        width: 100%;
         height: 100vh;
         position: absolute;
-        overflow: hidden;
-        top: calc(-25vh - 360px);
+        overflow: visible;
+        top: calc(-15vh - 444px);
         left: 480px;
         overflow-y: auto !important;
-        scroll-behavior: smooth !important;
         scroll-behavior: smooth !important;
 
         &::-webkit-scrollbar {  //隐藏滚动条
@@ -108,12 +106,13 @@
 
         .aplayer-lrc-current {
             font-family: 'Noto Sans SC', sans-serif;
-            font-size: 32px;
+            font-size: 48px;
             font-weight: 700;
             color: var(--white);
             line-height: 1.5 !important;
             margin: 4px;
             height: fit-content !important;
+            transition: all 0.6s ;
         }
         p {
             font-family: 'Noto Sans SC', sans-serif;
@@ -123,7 +122,9 @@
             line-height: 2.0 !important;
             margin: 4px;
             height: fit-content !important;
+            transition: all 0.6s ;
             white-space: nowrap;
+            overflow: visible;
 
         }
 
@@ -174,8 +175,26 @@
 
     }
 
+    .aplayer-bar, .aplayer-loaded, .aplayer-played{
+        height: 8px;
+        border-radius: 4px;
+    }
+
     .aplayer-bar {
-        z-index: 10;
+        background: rgba(196, 196, 196, 0.15) !important;
+    }
+
+    .aplayer-played {
+        background: var(--windy) !important;
+    }
+
+    .aplayer-loaded {
+        background: rgba(141, 144, 148, 0.25) !important;    
+    }
+
+    .aplayer-thumb {
+        margin-top: -1px
+        display: none;    
     }
 
     .aplayer-bar-wrap {
@@ -184,19 +203,73 @@
     }
 
     .aplayer-list {
-        width: 360px;
-        margin: 32px 0 0 8px;
-        border: none;
-
-        ol {
-            border-radius: 5px;
+        width: 480px;
+        margin: 0px 0 0 8px;
+        padding: 32px 56px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        transform: translateX(-64px);
+        &::-webkit-scrollbar {  //隐藏滚动条
+            width: 0 !important;
+            display: none !important;
         }
-        .aplayer-list-light {
-            background: rgba(255, 255, 255, 0.75);
+        
+        ol {
+            overflow: visible;
+        }
+
+        li {
+            height: 32px;
+            border-radius: 5px;
             border: none;
+            margin: 8px;
+
+            .aplayer-list-title, .aplayer-list-author {
+                color: var(--windy);
+                transition: all 0.2s;
+                
+               
+            }
+             &:hover {
+                background-color: rgba(255,255,255,0.75) 
+
+                .aplayer-list-title, .aplayer-list-author {
+                    color: var(--text);
+                }
+    
+            }
+            
+        }
+
+        .aplayer-icon .aplayer-icon-menu {
+            display: none;    
+        }
+
+
+        .aplayer-list-index {
+            display: none;    
+        }
+        .aplayer-list-title {
+                font-family: 'Noto Sans SC', sans-serif;
+                font-size: 14px;   
+            }
+
+        .aplayer-list-light {
+            background: rgba(255, 255, 255, 0.5);
+            color: var(--text);
+            box-shadow: 0px 4px 29.8px 3px rgba(54, 54, 54, 0.45);
+            
+            .aplayer-list-title, .aplayer-list-author {
+                color: var(--text);
+                
+            }
+
+            
+            
         }
         .aplayer-list-cur {
-            display: none;  
+             background: var(--windy) !important;
+             display: none;
         }
        
     }
@@ -204,6 +277,38 @@
     .aplayer-notice {
         display: none;    
     }
+
+    .aplayer-time {
+        width: 400px;
+        .aplayer-time-inner {
+            font-family: 'Noto Sans Serif', serif;
+            font-size: 14px;
+            color: var(--white);
+            opacity: 0.75;   
+            margin: 0 195px 0 0; 
+        }
+
+        .aplayer-icon {  
+            width: 20px;
+            height: 20px; 
+        }
+        .aplayer-icon svg path {
+            fill: var(--white);
+            opacity: 0.75; 
+        }
+        .aplayer-icon.aplayer-icon-menu {
+            display: none !important;    
+        }
+
+    }
+    .aplayer-volume {
+        background: var(--windy) !important;    
+    }
+    .aplayer-volume-bar {
+        background: rgba(141, 144, 148, 0.6) !important;
+        height: 40px;     
+    }
+    
 
     
 }

@@ -12,7 +12,7 @@
             ·
             <time class="article-date" datetime="<%= page.date.toISOString() %>"><%= page.date.format('YYYY-MM-DD') %></time>
             ·
-            <span class="article-readtime">345次阅读</span>
+            <span class="article-readtime"><span id="vercount_value_page_pv">Loading...</span>次阅读</span>
         </span>
     </div>
 </header>
@@ -40,7 +40,7 @@
     <% if (theme.waline && theme.waline.enable) { %>
         <div id="waline"></div>
             <script type="module">
-                import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+                import { init } from '<%- url_for("js/waline.js") %>';
 
                 init({
                 el: '#waline',

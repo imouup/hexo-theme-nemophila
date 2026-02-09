@@ -1,0 +1,17 @@
+<header class="page-header">
+    <% if (site.data.categoryCover) { %>
+        <% site.data.categoryCover.forEach(function(item) { %>
+            <% if (item.name === page.category) { %>
+                <div class="page-header-cover" style="background-image: url('<%- url_for(item.cover) %>');"></div>
+            <% } %>
+    <% }); %>
+    <% } %>
+        
+        
+    <%- partial('_partial/nav.ejs',{className: ''}) %>
+    <h1 class="page-title <%= page.cover ? 'need-shadow' : '' %>"><%= page.category %></h1>
+
+</header>
+<div class="category-content-container">
+    <%- partial('_widget/postlist', {posts: page.posts, category: page.category, tag: null})  %>
+</div>

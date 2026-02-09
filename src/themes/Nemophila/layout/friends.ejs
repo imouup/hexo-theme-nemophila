@@ -1,0 +1,41 @@
+<header class="page-header friends">
+    <!-- <div class="page-header-cover" style="background-image: url('<%# url_for(item.cover) %>');"></div>        -->
+    <%- partial('_partial/nav.ejs',{className: ''}) %>
+    <h1 class="page-title <%= page.cover ? 'need-shadow' : '' %>"><%= page.title %></h1>
+
+</header>
+<div class="friends-content-container">
+    <div class="friends-content">
+        <% if (typeof page.friends_list !== 'undefined' && page.friends_list.length > 0) { %>
+            <% page.friends_list.forEach((friend) => { %>
+            <a class="friend-card" href="<%= friend.url %>">
+                <img class="friend-avatar" src="<%- url_for(friend.avatar) %>" alt="Bilibili">
+                <section class="friend-info">
+                    <h2 class="friend-name"><%= friend.name %></h2>
+                    <p class="friend-description"><%= friend.description %></p>
+                </section>
+            </a>
+        <% }); %>
+         
+        <% } %>
+            
+    </div>
+    <div class="words-to-friends">
+        <article class="article-content">
+            <%- page.content %>
+        </article>
+        <% if (theme.waline && theme.waline.enable) { %>
+        <div id="waline"></div>
+            <script type="module">
+                import { init } from '<%- url_for("js/waline.js") %>';
+
+                init({
+                el: '#waline',
+                serverURL: '<%= theme.waline.serverURL %>',
+                });
+            </script>
+        </div>
+    <% } %>
+    </div>
+  
+</div>

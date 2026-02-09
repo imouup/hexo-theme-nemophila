@@ -421,9 +421,30 @@ inline equation: $E=mc^2$
         url: 'https://music.163.com/song/media/outer/url?id=3340112781.mp3',
         cover: window.origin + HEXO_SETTINGS.root + 'images/music_cover_test.jpg',
         lrc: window.origin + HEXO_SETTINGS.root + 'assets/Remember.lrc'
-    }]
+    },
+    {
+        name: 'Remember',
+        artist: 'Yachiyo',
+        url: 'https://music.163.com/song/media/outer/url?id=3340112781.mp3',
+        cover: window.origin + HEXO_SETTINGS.root + 'images/music_cover_test.jpg',
+        lrc: window.origin + HEXO_SETTINGS.root + 'assets/Remember.lrc'
+    }
+    ]
 });
 </script>
 
 This is the Aplayer test.
 
+## Link Test
+
+- inner link
+```html
+inner link: <link-ing type="inside" title="About me" link="/about"></link-ing>
+```
+inner link: <link-ing type="inside" title="About me" link="/about"></link-ing>
+
+- outer link
+```html
+<link-ing type="outside" title="Google Search" link="https://google.com"></link-ing>
+```
+<link-ing type="outside" title="Google Search" link="https://google.com"></link-ing>

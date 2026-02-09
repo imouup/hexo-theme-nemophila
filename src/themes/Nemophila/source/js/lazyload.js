@@ -10,7 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 const img = entry.target;
-                const realSrc = img.getAttribute('data-src');
+                const dataSrc = img.getAttribute('data-src');
+                let realSrc;
+                if (dataSrc && (dataSrc.startsWith('http') || dataSrc.startsWith('https') || dataSrc.startsWith('//'))) {
+                    realSrc = dataSrc;
+                } else {
+                    if (dataSrc && dataSrc.startsWith('/')) {
+                        realSrc = window.origin + '/' + dataSrc.replace('/','');
+                    } else {
+                        realSrc = window.origin + '/' + dataSrc;
+                    }
+                }
 
                 if(realSrc) {
                     const tempimg = new Image();

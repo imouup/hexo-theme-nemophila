@@ -18,6 +18,7 @@
     "hexo-renderer-markdown-it-plus": "^1.0.6",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
+    "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-embed": "latest"
   }
 }

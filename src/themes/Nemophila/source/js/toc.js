@@ -14,6 +14,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const href = link.getAttribute('href');
+            const targetId = decodeURIComponent(href.substring(1));
+            const targetHeader = document.getElementById(targetId);
+
+            if (targetHeader) {
+                // 计算滚动位置，减去顶部导航栏高度
+                const headerOffset = 80;
+                const elementPosition = targetHeader.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                // 执行平滑滚动
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                
+            }
+        });
+    });
+
     const observer = new IntersectionObserver((entries) => {
         
         const visibleEntries = entries.filter(entry => entry.isIntersecting);
@@ -33,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const activateTocLink = (id) => {
 
-        targetLink = document.querySelector(`.toc-link[href="#${CSS.escape(id)}"]`);
+        let targetLink = document.querySelector(`.toc-link[href="#${encodeURIComponent(id)}"]`);
+
 
         
 

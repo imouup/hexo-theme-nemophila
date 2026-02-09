@@ -1,6 +1,9 @@
 <header class="article-header">
     <% if (page.cover) { %>
-        <div class="article-header-cover" style="background-image: url('<%- url_for(page.cover) %>');"></div>
+        <% if (page.cover_showInPost !== false) { %>
+            <div class="article-header-cover" style="background-image: url('<%- url_for(page.cover) %>');"></div>
+        <% } %>
+        
     <% } %>
 
     <%- partial('_partial/nav.ejs',{className: ''}) %>

@@ -4,7 +4,7 @@
 
 <nav class="navbar <%= navtheme %>">
     <a href="<%- url_for('/') %>" style="text-decoration: none;">
-        <h1 class="title <%= navtheme %>">Nemophila</h1> 
+        <h1 class="title <%= navtheme %>"><%= theme.title ? theme.title : 'Nemophila' %></h1> 
     </a>
     <div class="navlink <%= navtheme %>">
         <% for (let link in theme.menu) { %>

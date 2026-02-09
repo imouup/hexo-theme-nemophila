@@ -9,11 +9,16 @@
         data-filter-category="<%= targetCategory %>"
         data-per_page="<%= config.index_generator.per_page %>">
     <div id="postlist-header">
-    <span>
-        <div id="star"></div>
-        <h3 id="title"><%= title %></h3>
-    </span>
-    <hr>
+    <% if (typeof title !== 'undefined') { %>
+        <span>
+            <div id="star"></div>
+            <h3 id="title"><%= title %></h3>
+        </span>
+        <hr>
+        
+    <% } %>
+        
+    
     </div>
     <article id="postlist">
         <% if(initPosts && initPosts.length > 0) { %>
@@ -39,12 +44,13 @@
                         <span class="post-view post-comment-num post-category">
                             <span class="post-view">
                                 <div class="post-view-icon"></div>
-                                <h5>112358 人读过</h5>
+                                <h5><span class="view-count" data-path="<%= post.path %>">Loading...</span> 人读过</h5>
                             </span>
-                            <span class="post-comment-num">
+                            <!-- <span class="post-comment-num">
                                 <div class="post-comment-num-icon"></div>
                                 <h5>112 条评论</h5>
-                            </span>
+                            </span> -->
+                            
                             <span class="post-category">
                                 <% if(post.categories && post.categories.length > 0) { %>
                                 <div class="post-category-icon"></div>
@@ -94,7 +100,7 @@
         
         <span class="post-view">
           <div class="post-view-icon"></div>
-          <h5>112358 人读过</h5>
+          <h5><span class="view-count" >Loading...</span> 人读过</h5>
         </span>
 
         <span class="post-comment-num">
@@ -118,4 +124,45 @@
 
 <%- js('js/previous_btn.js') %>
 
-<!-- TODO: 添加阅读量和评论量 -->
+<!-- 使用 vercount api 获取文章阅读量 -->
+<script>
+    const getUrl = (rawurl) => {
+        if (rawurl.startsWith('http://') || rawurl.startsWith('https://')) {
+            return rawurl;
+        } else {
+            if (rawurl.startsWith('/')) {
+                return window.origin + rawurl;
+            } else {
+                return window.origin + '/' + rawurl;
+            }
+        }
+    }
+
+    // fetch 函数
+    const fetchVercout = () => {
+        const viewCountElements = document.querySelectorAll('.view-count');
+        viewCountElements.forEach(element => {
+            const postPath = element.getAttribute('data-path');
+            const url = getUrl(postPath);
+            const vercountUrl = "https://events.vercount.one/api/v2/log?url=" + encodeURIComponent(url);
+            fetch(vercountUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const readTime = data['data']['page_pv'];
+                    element.textContent = readTime;
+                })
+                .catch(error => {
+                    console.error('Error fetching view count:', error);
+                    element.textContent = '一些';
+                });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchVercout);
+
+</script>
+
+
+
+<!-- TODO: 添加评论量 -->
+

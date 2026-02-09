@@ -1,0 +1,10 @@
+<div id="cannot-get-page">
+    <%- partial('_partial/nav', {className: 'theme--homepage'})  %>
+    <div id="cannot-get-page-content">
+        <h1>404 Not Found</h1>
+        <p>This page <strong>could not be found</strong>.</p>
+        <p>It may still be under construction or the URL is incorrect.</p>
+        <a href="<%= url_for('/') %>">Return to Homepage</a>
+    </div>
+
+</div>

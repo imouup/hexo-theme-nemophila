@@ -8,6 +8,45 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     if (!wrapper || !container || !template || !btn) return;
 
+    // 手写的url_for
+    const getUrl = (rawurl) => {
+        if (rawurl.startsWith('http://') || rawurl.startsWith('https://')) {
+            return rawurl;
+        } else {
+            if (rawurl.startsWith('/')) {
+                return window.origin + rawurl;
+            } else {
+                return window.origin + '/' + rawurl;
+            }
+        }
+    }
+
+    // 批量获取阅读量的函数
+    const fetchBatchVercount = (elements) => {
+        if (!elements || elements.length === 0) return;
+
+        elements.forEach(element => {
+            const postPath = element.getAttribute('data-path');
+            const url = getUrl(postPath);
+            const vercountUrl = "https://events.vercount.one/api/v2/log?url=" + encodeURIComponent(url);
+            fetch(vercountUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const readTime = data['data']['page_pv'];
+                    element.textContent = readTime;
+                })
+                .catch(error => {
+                    console.error('Error fetching view count:', error);
+                    element.textContent = '一些';
+                });
+
+
+        });
+
+
+    }
+
+
     // 动画
     const observerOptions = {
         root: null, 
@@ -106,6 +145,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
         
     // 渲染函数
     const renderBatch = (posts) => {
+        // 用于收集新添加的阅读量元素
+        let newViewCountElements = [];
+
+
         posts.forEach(post => {
             const clone = template.content.cloneNode(true);
 
@@ -135,6 +178,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
             const link = clone.querySelector('.post-card-link');
             link.href = '/' + post.path;
             link.querySelector('.post-title').textContent = post.title;
+
+            // ReadTime
+            const readTimeSpan = clone.querySelector('.view-count');
+            readTimeSpan.setAttribute('data-path', getUrl(post.path));
+            newViewCountElements.push(readTimeSpan);
 
             // Category
             const catWrapper = clone.querySelector('.post-category');
@@ -173,7 +221,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
             }
 
         });
-
+        // 批量获取并更新阅读量
+        fetchBatchVercount(newViewCountElements);
     }
 
     btn.addEventListener('click', async () => {

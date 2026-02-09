@@ -1,4 +1,6 @@
-# Menu-Sidebar
+title: 
+
+# Nav bar
 menu:
   首页:
     path: /
@@ -16,7 +18,7 @@ menu:
     icon: ico/navbar/list.svg
     submenu: 
       '番组': {path: /lists/bangumi/ ,type: page, icon: 'fas fa-tv'}
-      '音乐': {path: /lists/music/ ,type: page, icon: 'far fa-headphones'}
+      '音乐': {path: /music/ ,type: page, icon: 'far fa-headphones'}
       '书架': {path: /lists/books/ ,type: page, icon: 'far fa-bookmark'}
   Friends: 
     path: /friends/
@@ -51,10 +53,6 @@ lazyload:
   enable: true
   loading_img: /images/yachiyo_loading2_640.webp
 
-# Content
-excerpt_link: Read More
-fancybox: true
-
 icp_license: 
   icp_license_link: "https://icp.gov.moe/?keyword=20212022"
   text: "萌ICP备20212022号"
@@ -71,53 +69,7 @@ waline:
   enable: true
   serverURL: 'https://waline-test.mouup.top' 
 
-
-# # Footer
-# copyright: |-
-#   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>
-#   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></br>
-
-# Footer
-copyright:
-# Need help choosing? Please see...
-# https://creativecommons.org/choose/
-# https://choosealicense.com/
-# You can use html like below...
-# copyright: |-
-#   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>
-#   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></br>
-
-# Sidebar
-sidebar: right
-widgets:
-- tag
-- recent_posts
-- category
-- archive
-#- tagcloud
-
-
-
-# display widgets at the bottom of index pages (pagination == 2)
-index_widgets:
-# - category
-# - tagcloud
-# - archive
-
-# Widget behavior
-archive_type: 'monthly'
-show_count: false
-recent_posts_limits: 5
-
-# Miscellaneous
-google_analytics:
-gauges_analytics:
-favicon: /favicon.png
-twitter:
-fb_admins:
-fb_app_id:
-
-
+# markdown parser
 markdown_it_plus:
   render:
     html: true
@@ -134,14 +86,15 @@ markdown_it_plus:
         name: markdown-it-mark
         enable: true
 
+# rss
 feed:
-  type: atom           # 指定生成类型为 atom
-  path: atom.xml       # 生成的文件路径，访问地址为 yoursite.com/atom.xml
-  limit: 0            # 最多生成的文章数量，0 为不限制
-  hub:                 # PubSubHubbub 协议中心（可选，通常留空）
-  content: true        # 是否在 RSS 中包含文章全文（true 为全文，false 为摘要）
-  content_limit: 140   # 如果 content 设为 false，这里设置摘要的字符限制
-  content_limit_delim: ' ' # 截断摘要时的分隔符
-  order_by: -date      # 排序方式，默认按日期倒序
-  icon: ico/Nemo.svg       # 自定义 Feed 图标（可选）
-  autodiscovery: true  # 是否在页面头部自动添加 Feed 链接标签
+  type: atom           
+  path: atom.xml       
+  limit: 0           
+  hub:                 # PubSubHubbub协议中心
+  content: true        # 是否在RS 中包含文章全文
+  content_limit: 140   # 摘要的字符限制
+  content_limit_delim: ' ' 
+  order_by: -date      # 按日期倒序
+  icon: ico/Nemo.svg       # 自定义Feed图标
+  autodiscovery: true  

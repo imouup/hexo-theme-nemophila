@@ -1,0 +1,112 @@
+.friends-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 0 0 0; 
+    gap: 24px; 
+}
+
+.friends-content {
+    display: flex;
+    width: 844px;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    justify-content: space-between;
+}
+
+.friend-card {
+   width: 415px;
+   height: 170px;
+   border: 1px solid var(--bg);
+   border-radius: 0px;
+   padding: 16px 24px 8px 24px;
+   display: flex;
+   flex-direction: row;
+   gap: 16px;
+   box-sizing: border-box;
+   text-decoration: none;
+   color: var(--text);
+   font-family: "Noto Serif SC", serif;
+   transition: all 0.1s; 
+
+   &:hover {
+        border-color: var(--base);
+
+        .friend-name {
+            color: var(--base);
+        }
+        .friend-description {
+            color: var(--text3);
+        }
+    }
+
+
+}
+
+.friend-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+}
+
+.friend-description {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    transition: all 0.1s;
+    font-size: 14px;   
+}
+
+.friend-avatar {
+    width: 84px;
+    height: 84px;
+    border-radius:0px;
+    object-fit: cover;
+    margin: 4px 0;
+}
+
+.friend-name {
+    margin: 8px 0 8px 0;   
+    position: relative;
+    transition: all 0.1s; 
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 2px;
+        border-bottom: 1px dashed var(--bg);
+    }
+
+}
+
+.page-header.friends {
+    background: none;
+    margin: 0;
+    width: 100%;
+    height: 320px;
+    position: relative;  
+    overflow: hidden;    
+    
+}
+
+.words-to-friends {
+    width: 844px;
+    box-sizing: border-box;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+
+    .article-content {
+        width: 796px 
+        margin: 0 auto 48px auto;   
+        
+    } 
+}

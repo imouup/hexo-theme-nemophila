@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 document.addEventListener('DOMContentLoaded', () => {
 
     const headers = document.querySelectorAll('.article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6');

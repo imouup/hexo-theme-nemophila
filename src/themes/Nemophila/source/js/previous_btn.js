@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 document.addEventListener('DOMContentLoaded', ()=> {
     const wrapper = document.getElementById('postlist-container');
     const container = document.getElementById('postlist');

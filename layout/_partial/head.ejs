@@ -1,4 +1,3 @@
-<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <head>
     <title>
         <% if (is_post()) { %>
@@ -21,6 +20,8 @@
     <!-- 引入APlayer支持css和js -->
     <%- css('css/APlayer.min.css')  %>
     <%- js('js/APlayer.min.js')  %>
+    <!-- 引入Metingjs -->
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
     <!-- 引入Linking -->
     <%- js('js/linking.js') %>
     <!-- 引入vercount计数器 -->
@@ -40,5 +41,3 @@
             };        
     </script>
 </head>
-
-<!-- TODO: 添加控制台字符画 -->

@@ -24,7 +24,9 @@
                 </span>
         </div>
         <div id="hi-right">
-            <%- partial('_widget/tweet.ejs') %>
+            <% if (theme.tweet.enable !== false) { %>
+                <%- partial('_widget/tweet.ejs') %>
+            <% } %>
         </div>
     </div>
     <img src="/ico/Nemo.svg" alt="Nemophila" id="nemo">

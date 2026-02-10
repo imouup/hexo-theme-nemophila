@@ -1,4 +1,3 @@
-<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <header class="article-header">
     <% if (page.cover) { %>
         <% if (page.cover_showInPost !== false) { %>
@@ -42,12 +41,12 @@
         </div>
     <% } %>
     <% if (theme.waline && theme.waline.enable) { %>
-        <div id="waline"></div>
+        <div class="waline"></div>
             <script type="module">
                 import { init } from '<%- url_for("js/waline.js") %>';
 
                 init({
-                el: '#waline',
+                el: '.waline',
                 serverURL: '<%= theme.waline.serverURL %>',
                 });
             </script>

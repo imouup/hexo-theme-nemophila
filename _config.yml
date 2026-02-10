@@ -45,6 +45,7 @@ aboutme:
   avatar: images/avatar.jpg
 
 tweet:
+  enable: true
   api: 'https://tweet-api-blog.nyaku.moe/tweet'
 
 banner: "images/banner_sky.jpg"

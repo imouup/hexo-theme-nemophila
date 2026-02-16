@@ -1,0 +1,18 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<header class="page-header">
+    <% if (site.data.tagCover) { %>
+        <% site.data.tagCover.forEach(function(item) { %>
+            <% if (item.name === page.tag) { %>
+                <div class="page-header-cover" style="background-image: url('<%- url_for(item.cover) %>');"></div>
+            <% } %>
+    <% }); %>
+    <% } %>
+        
+        
+    <%- partial('_partial/nav.ejs',{className: ''}) %>
+    <h1 class="page-title <%= page.cover ? 'need-shadow' : '' %>"><%= page.tag %></h1>
+
+</header>
+<div class="category-content-container">
+    <%- partial('_widget/postlist', {posts: page.posts, tag: page.tag})  %>
+</div>

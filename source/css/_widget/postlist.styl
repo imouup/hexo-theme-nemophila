@@ -199,7 +199,7 @@
         }
         }
 
-    .post-view.post-comment-num.post-category {
+    .post-meta-container {
         display: flex;
         flex-direction: row;
         gap: 16px;
@@ -305,6 +305,57 @@
             a {
                 text-decoration: none;
                 color: var(--text2);}
+        }
+        }
+    
+    .post-tags {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2px;
+        transition: all 0.2s;
+
+
+        .post-tag-icon {
+            background-color: var(--text2);
+            width: 14.23px;
+            height: 14.23px;
+            -webkit-mask-image: url('/ico/post-card/tag.svg');
+            mask-image: url('/ico/post-card/tag.svg');  
+            -webkit-mask-repeat: no-repeat;  // 防止重复填充
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;  // 居中
+            mask-position: center;
+            -webkit-mask-size: contain; // 确保完整显示
+            mask-size: contain;
+        }
+        .post-tag-item {
+            margin: 0 0 0 4px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--text2);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+
+            a {
+                text-decoration: none;
+                color: var(--text2);
+                }
+
+            &:hover {
+            .post-tag-icon {
+                background-color: var(--base);
+                }
+            a {
+                color: var(--base);
+            }
+
+            }
+
+            
         }
         }
 

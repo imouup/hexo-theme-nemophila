@@ -147,3 +147,26 @@ jsonContent:
     categories: true
     tags: true
     cover: true
+
+bangumi: # 追番设置
+  enable: true
+  source: bgm
+  path:
+  vmid: 652983
+  title: '不完整の追番列表'
+  quote: '生命不息，追番不止！'
+  show: 1
+  lazyload: true
+  loading:
+  showMyComment: true
+  pagination: true
+  metaColor:
+  color:
+  webp:
+  progress:
+  extraOrder:
+ # proxy:
+ #   host: '代理host'
+ #   port: '代理端口'
+  extra_options:
+    key: value

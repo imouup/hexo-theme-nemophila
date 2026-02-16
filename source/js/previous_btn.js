@@ -215,13 +215,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
             observeNewItems(); // 监听新添加的文章卡片
 
-            loadedCount += posts.length;
-
             if (window.observeImages) {  // 触发lazyload监听
                 window.observeImages();
             }
 
         });
+        
+        loadedCount += posts.length;
+
         // 批量获取并更新阅读量
         fetchBatchVercount(newViewCountElements);
     }
@@ -249,15 +250,16 @@ document.addEventListener('DOMContentLoaded', ()=> {
     window.setSearchResult = (postList) => {
         container.innerHTML = ''; // 清空
         loadedCount = 0;
-        activeList = postList;
+        activeList = postList || [];
         isDataFetched = true;
 
     // 渲染第一批
-    const firstBatch = activeList.slice(0, batchSize);
+    const size = parseInt(batchSize) || 10;
+    const firstBatch = activeList.slice(0, size);
     renderBatch(firstBatch);
 
     // 控制按钮
-    if (activeList.length > batchSize) {
+    if (activeList.length > size) {
         btn.style.display = 'block';
         btn.textContent = 'Previous';
         btn.disabled = false;

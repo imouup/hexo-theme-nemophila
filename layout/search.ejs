@@ -1,2 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <!-- TODO: search.ejs -->
+
+<header class="search-header">
+    <a class="search-page-back" href="/"></a>
+</header>
+<div class="search-container">
+    <span class="search-input">
+        <input class="search-input-field" type="text" placeholder="想搜点什么..." autofocus>
+        <button class="search-input-btn">
+            <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.2236 29.1975C22.941 29.1975 29.1972 22.9413 29.1972 15.2238C29.1972 7.50627 22.941 1.25 15.2236 1.25C7.50619 1.25 1.25 7.50627 1.25 15.2238C1.25 22.9413 7.50619 29.1975 15.2236 29.1975Z" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M32.6899 32.6911L25.0918 25.0929" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </span>
+    <section class="search-result">     
+        <div class="search-result-list">
+            <%- partial('_widget/postlist', { posts: [] }) %>
+        </div>
+        <p class="search-result-loading">Loading...</p>
+    </section>
+</div>
+
+<%- js('js/search.js')  %>

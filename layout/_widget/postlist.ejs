@@ -3,6 +3,7 @@
     const initPosts = (typeof posts !== 'undefined') ? posts : []; // 初始文章列表，在首页、tag页及category页会传入
     const targetTag = (typeof tag !== 'undefined') ? tag : null;
     const targetCategory = (typeof category !== 'undefined') ? category : null;
+    const listtitle = (typeof title !== 'undefined') ? title : null;
 %> 
 
 <section id="postlist-container" 
@@ -10,10 +11,10 @@
         data-filter-category="<%= targetCategory %>"
         data-per_page="<%= config.index_generator.per_page %>">
     <div id="postlist-header">
-    <% if (typeof title !== 'undefined') { %>
+    <% if (listtitle !== null && typeof listtitle !== 'undefined') { %>
         <span>
             <div id="star"></div>
-            <h3 id="title"><%= title %></h3>
+            <h3 id="title"><%= listtitle %></h3>
         </span>
         <hr>
         
@@ -76,9 +77,11 @@
         <% } %>
     </article>
     <div id="previous-btn-container">
-        <button id="previous-btn">Previous</button>
-        <h5 id="previous-no-more">没有更多了 ^_^</h5>
+       <button id="previous-btn" <% if (!initPosts || initPosts.length === 0) { %>style="display: none;"<% } %>>Previous</button>
+        <h5 id="previous-no-more" >没有更多了 ^_^ </h5>
     </div>
+    
+
 </section>
 
 
@@ -104,10 +107,10 @@
           <h5><span class="view-count" >Loading...</span> 人读过</h5>
         </span>
 
-        <span class="post-comment-num">
+        <!-- <span class="post-comment-num">
           <div class="post-comment-num-icon"></div>
           <h5>112 条评论</h5>
-        </span>
+        </span> -->
 
         <span class="post-category" style="display: none;">
           <div class="post-category-icon"></div>

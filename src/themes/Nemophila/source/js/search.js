@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 document.addEventListener('DOMContentLoaded', () => {
 
     // 搜索栏

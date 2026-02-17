@@ -68,12 +68,24 @@
                             <span class="post-tags">
                                 <% if(post.tags && post.tags.length > 0) { %>
                                 <div class="post-tag-icon"></div>
-                                <% post.tags.forEach((tag, index) => { %>
+                                <% 
+                                    let currentLength = 0;
+                                    const maxLen = 40;
+                                    const tags = post.tags.toArray ? post.tags.toArray() : post.tags;
+                                %>
+                                <% for (let i = 0; i < tags.length; i++) { 
+                                    const tag = tags[i];
+                                    if (currentLength + tag.name.length > maxLen) {
+                                        %> ... <%
+                                        break; 
+                                    }
+                                    currentLength += tag.name.length;
+                                %>
                                 <div class="post-tag-item"> 
                                     <a href="<%= url_for(tag.path) %>" class="post-tag-link"><%= tag.name %></a>
-                                    <% if (index < post.tags.length - 1) { %>, <% } %>
+                                    <% if (i < tags.length - 1 && (currentLength + (tags[i+1] ? tags[i+1].name.length : 0) <= maxLen)) { %>, <% } %>
                                 </div>
-                                <% }); %>
+                                <% } %>
                                 <% } %>
                             </span>
 

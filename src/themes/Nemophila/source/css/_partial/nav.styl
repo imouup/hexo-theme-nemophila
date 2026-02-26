@@ -272,3 +272,331 @@
     }
 }
 
+.navbar-m {
+    display: none;
+}
+
+
+
+
+// Mobile Phone
+@media (max-width: 768px) {
+    
+.navbar {
+    display: none;    
+}
+
+.navbar-m {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: space-between;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    align-items: center;
+
+    .title-m {
+        font-size: 24px;
+        font-weight: 500;
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--text);
+        right: 64px;   
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        right: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    .nav-menu {
+
+        width: 32px;
+        height: 32px;
+        background-color: var(--text);
+        mask-image: url(../ico/navbar-m/menu.svg);
+        -webkit-mask-image: url(../ico/navbar-m/menu.svg);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        margin: 16px 16px 16px 24px;
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--base);
+        }
+    }
+
+    .search-m {
+        width: 24px;
+        height: 24px;
+        background-color: var(--text);
+        mask-image: url(../ico/navbar-m/search.svg);
+        -webkit-mask-image: url(../ico/navbar-m/search.svg);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        margin: 16px 24px 16px 8px;
+        transition: all 0.2s;
+        cursor: pointer;
+        transform: translateY(0.5px);
+
+        &:hover {
+            background-color: var(--base);
+        }
+    }
+
+    .navbar-submenu-bgcover {
+        opacity : 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(2px);  
+        transition: all 0.3s ease-in-out;
+        z-index: -1;
+    }
+
+    .navbar-submenu-bgcover.active {
+        opacity : 1.0;
+        z-index: 998;
+    }
+
+    .navbar-submenu.active {
+        left: 0;    
+    }
+
+    .navbar-submenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: -120%;
+        width: 234px;
+        height: 100vh;
+        height: 100dvh;
+        z-index: 999;
+        background-color: var(--white);
+        box-sizing: border-box;
+        padding: 36px 0 64px 0;
+        overflow-y: auto;
+        transition: all 0.3s ease-in-out;
+
+
+        .navbar-submenu-close {
+            width: 32px;
+            height: 32px;
+            background-color: var(--text);
+            mask-image: url(../ico/navbar-m/x.svg);
+            -webkit-mask-image: url(../ico/navbar-m/x.svg);
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            margin: 16px 0 16px 24px;
+            transition: all 0.2s;
+            cursor: pointer;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            &:hover {
+                background-color: var(--base);
+            }    
+        }
+
+        .navbar-submenu-avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            margin: 24px auto 16px auto;
+        }
+
+        .navbar-submenu-name_mo {
+            margin: 0;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--base);
+            text-decoration: none;
+        }
+
+        .navbar-submenu-name {
+            margin: 0;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--secondary);
+            text-decoration: none;    
+        }
+
+    }
+
+
+    .navbar-submenu-contact {
+       display: flex;
+       flex-direction: row; 
+       align-items: center;
+       margin: 24px 0 0 0;
+       gap: 8px;
+       padding: 0;
+
+       .contact-item {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-decoration: none;
+           transition: all 0.15s;
+           -webkit-user-drag: none
+
+           &:hover {
+                transform: translateY(-10%) scale(1.05);
+            }
+       }
+
+       // 修正 Bilibili 图标视觉偏低的问题
+       a[title="Bilibili"] .contact-icon {
+           transform: translateY(-1.0px);   
+       }
+
+       i {
+            font-size: 16px;
+            color: var(--base);
+            -webkit-user-drag: none
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;    
+        }
+    }
+
+    .navbar-submenu-aboutme {
+        display: flex;
+        margin: 32px 0 16px 0;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        transition: all 0.18s;
+        -webkit-user-drag: none
+        font-size: 16px;
+        color: var(--base);
+        font-family: 'Noto Serif SC', serif;
+        font-weight: 600;
+
+        &:hover {
+            color: var(--text3);
+        }
+
+    }
+
+    .navbar-submenus {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 72px;
+        box-sizing: border-box;
+        margin-top: 32px;
+
+        .navbar-submenu-item-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            > a {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding: 12px 0;
+                text-decoration: none;
+                color: var(--text);
+                font-family: 'Noto Serif SC', serif;
+                font-size: 16px;
+                font-weight: 400;
+                transition: all 0.2s;
+
+                .nav-icon {
+                    width: 18px;
+                    height: 18px;
+                    background-color: var(--text);
+                    -webkit-mask-size: contain;
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-size: contain;
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    margin-right: 6px;
+                    transition: all 0.2s;
+                    
+                }
+
+                &:hover {
+                    color: var(--base);
+
+                    .nav-icon {
+                        background-color: var(--base);
+                    }
+                }
+            }
+        }
+
+        .navbar-submenu-child {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left:24px; 
+            box-sizing: border-box;
+
+            a {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding: 8px 0;
+                text-decoration: none;
+                color: #A2B0C3; 
+                font-family: 'Noto Serif SC', serif;
+                font-size: 14px; 
+                font-weight: 400;
+                transition: all 0.2s;
+
+                i {
+                    width: 16px;
+                    text-align: center;
+                    font-size: 14px;
+                    color: #A2B0C3;
+                    margin-right: 6px;
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    color: var(--base);
+                    
+                    i {
+                        color: var(--base);
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+}
+}

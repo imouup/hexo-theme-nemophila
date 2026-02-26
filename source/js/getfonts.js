@@ -18,6 +18,6 @@
 
     let fontLink = document.createElement('link');
     fontLink.rel = 'stylesheet';
-    fontLink.href = cssDomain + '/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap';
+    fontLink.href = cssDomain + '/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;700&display=swap';
     document.head.appendChild(fontLink);
 })();

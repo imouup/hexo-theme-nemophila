@@ -275,6 +275,8 @@
     position: relative;
     overflow: hidden;
     padding: 16px 32px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 
     .code-header {
         position: absolute;
@@ -289,6 +291,9 @@
         justify-content: flex-end;
         gap: 8px;
         box-shadow: 0px 2px 10px 1px rgba(205, 216, 232, 0.25);
+        z-index: 2;
+        pointer-events: auto;
+        z-index: 2;
 
         .code-lang {
             font-family: 'Noto Serif SC', serif;
@@ -305,7 +310,15 @@
         .code-copy {
             cursor: pointer;
             transition: all 0.2s;
-            transform: translateY(3px);    
+            transform: translateY(1px);
+            border: none;
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .copy-icon {
@@ -343,11 +356,23 @@
         line-height: 2.0;
     }
 
+
+
     .gutter {
         
         color: var(--text2);
         text-align: right;
         width: 12px; /* 固定行号宽度 */
+    }
+
+    // markdown 代码高亮会输出 span.strong / span.emphasis，需要在代码块内还原
+    .code .strong {
+        font-weight: inherit !important;
+        color: inherit !important;
+    }
+
+    .code .emphasis {
+        font-style: inherit !important;
     }
 
 
@@ -361,6 +386,11 @@
     background-color: var(--bg);
     padding: 4px 8px;
     border-radius: 10px;
+    white-space: break-spaces;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .article-content a {
@@ -368,6 +398,12 @@
     text-decoration: none;
     transition: all 0.2s;
     font-weight: 600;
+    white-space: break-spaces;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    
 
     &:hover {
         color: var(--base);
@@ -547,8 +583,8 @@
             top: 50%;
             transform: translateY(-45%);
             left: -24px;
-            width: 100%;
-            height: 100%;
+            width: 16px;
+            height: 16px;
 
 
             --marker-icon: url('../ico/article/cc_icon.svg');
@@ -724,5 +760,70 @@ video {
 }
 
 
+@media (max-width: 768px) {
+    .article-content-container {
+        margin: 24px 0;
+
+        .article-content {
+            width: 90%;
+            margin: 0 auto;    
+        }
+
+        .image-container {
+            img {
+                max-width: 100%;
+            }    
+        }
+
+        blockquote {
+            margin: 2em 0px
+        }
+
+    }
+
+    .article-header {
+        height: 200px;
+        background: none;
+
+        .article-header-cover {
+            filter: blur(5px) brightness(0.8);
+        }
+
+        .article-info {
+            width: 90%;
+            left: 5%;
+            transform: none;
+            gap: 16px;
+        }
+
+        .article-title {
+            font-size: 24px;
+        }
+
+        .article-author-avatar-date-readtime {
+            font-size: 14px;
+        }
+    }
+
+    .article-content-container .article-cclicense {
+        width: 95%;
+        margin: 96px auto 0 auto;
+        font-size: 12px;
+        
+        .article-cclicense-text {
+            transform: translateX(10px);
+        }
+    }
+
+    .article-content-container .article-next {
+        width: 95%;    
+    }
+
+    .article-content-container .aplayer {
+        width: 95% !important;
+    }
+
+}
 
 // TODO: 代码高亮样式
+

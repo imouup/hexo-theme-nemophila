@@ -152,20 +152,40 @@
     // }
     }
 
-// Mobile Phobe
+.homepage-header #hi-m {
+    display: none;    
+}
+
+
+// Mobile Phone
 @media (max-width: 768px)  {
+    .homepage-header {
+        width: 100%;
+        height: max-content;
+        background-color: transparent;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+    }
+
+
     .homepage-header #hi {
-        #hiauthor {
+        #hi-left {
             display: none;
         }
 
-        .aboutme {
+        #hi-right {
             display: none;
         }
     }
 
     .homepage-header {
         background-color: transparent;
+    }
+
+    .homepage-header #hi-m {
+        display: flex;
+        margin: 8px auto 128px auto;
     }
 
     

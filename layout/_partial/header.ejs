@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <header class = "homepage-header">
     <%- partial('nav.ejs', {className: 'theme--homepage'}) %>
+    
+    <!-- Default -->
     <div id="hi">
         <div id="hi-left">
             <h1 id="hiauthor">Hi,<%= config.author  %>!</h1>
@@ -29,6 +31,13 @@
             <% } %>
         </div>
     </div>
+
+    <!-- Mobile -->
+    <div id="hi-m">
+        <%- partial('_widget/tweet.ejs') %>
+        
+    </div>
+
     <img src="/ico/Nemo.svg" alt="Nemophila" id="nemo">
 </header>
 

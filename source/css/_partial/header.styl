@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 .homepage-header {
-        width: 100vw;
+        min-width: 982px;
+        max-width: 100%;
         height: 100vh;
         background-color: var(--windy);
         position: relative;
         overflow: hidden;
-        margin: 0;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
 .homepage-header #hi-left {
@@ -160,6 +162,7 @@
 // Mobile Phone
 @media (max-width: 768px)  {
     .homepage-header {
+        min-width: 0;
         width: 100%;
         height: max-content;
         background-color: transparent;

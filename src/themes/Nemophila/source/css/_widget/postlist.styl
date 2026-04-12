@@ -483,18 +483,19 @@
     }
 
     #postlist {
-        padding: 0 20px;
+        padding: 0 12px;
         
         .post-card {
             flex-direction: column;
             align-items: center;
-            gap: 16px;
-            padding: 16px 16px 16px 16px;
+            gap: 0px;
+            padding: 16px 16px 24px 16px;
         }
 
         .post-banner {
             width: 100%;
-            height: 272px;    
+            aspect-ratio: 4 / 3;
+            height: auto;
         }
 
         .post-info .post-meta-container {
@@ -502,9 +503,14 @@
         }
 
         .post-info .post-title {
-            margin: 12px 0 24px 0;
-            height: 36px;
-            overflow: hidden;    
+            margin: 8px 0 16px 0;
+            height: auto;
+            overflow: hidden;
+            font-size: 18px;    
+        }
+
+        .post-info .post-time {
+            margin: 16px 0 0 0;
         }
 
     }

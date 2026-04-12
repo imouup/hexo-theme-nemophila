@@ -26,7 +26,13 @@
             <%- page.content %>
         </article>
         <% if (theme.waline && theme.waline.enable) { %>
-        <div id="waline"></div>
+        
+    <% } %>
+    </div>
+    
+  
+</div>
+<div id="waline"></div>
             <script type="module">
                 import { init } from '<%- url_for("js/waline.js") %>';
 
@@ -36,7 +42,3 @@
                 });
             </script>
         </div>
-    <% } %>
-    </div>
-  
-</div>

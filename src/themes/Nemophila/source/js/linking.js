@@ -20,6 +20,7 @@ class Linking extends HTMLElement {
 
         const commonStyle = `
             :host {
+                display: inline-block;
                 max-width: 100%;       
                 vertical-align: middle;
             }
@@ -37,6 +38,7 @@ class Linking extends HTMLElement {
                             height: 32px;
                             margin: 8px 4px;
                             width: fit-content;
+                            max-width: 100%;
                             font-family: 'Noto Serif SC', serif;
                             font-size: 16px;
                             color: #1c2029;
@@ -47,6 +49,7 @@ class Linking extends HTMLElement {
                             border-radius: 8px;
                             padding: 0 16px 2px 16px;
                             align-items: center;
+                            transform: translateY(-1px);
 
                             white-space: nowrap;
                             overflow: hidden;
@@ -69,11 +72,16 @@ class Linking extends HTMLElement {
                  this.shadowRoot.innerHTML = `
                     <style>
                         ${commonStyle}
+                        :host {
+                            display: block;
+                        }
                         .link-out {
                             display: block;
                             text-decoration: none;
                             height: 64px;
                             margin: 16px auto;
+                            width: 100%;
+                            max-width: 400px;
                             padding: 8px 12px;
                             
 
@@ -86,7 +94,8 @@ class Linking extends HTMLElement {
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
-                            width: 400px;
+                            width: 100%;
+                            max-width: 100%;
                             margin: 0 auto;
                             border: 1px solid #cacdcf;
                             padding: 10px 8px;

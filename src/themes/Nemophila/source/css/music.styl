@@ -223,7 +223,7 @@
             height: 32px;
             border-radius: 5px;
             border: none;
-            margin: 8px;
+            margin: 8px 0;
 
             .aplayer-list-title, .aplayer-list-author {
                 color: var(--windy);
@@ -313,5 +313,59 @@
 
     
 }
+
+@media (max-width: 768px) {
+    #music-page .aplayer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 8vh;
+
+        .aplayer-body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .aplayer-pic {
+                width: 320px;
+                height: 320px;    
+            }
+        }
+
+        .aplayer-info {
+            width: 320px; 
+
+            .aplayer-controller, .aplayer-time {
+                width: 100%;    
+            }   
+
+            .aplayer-time-inner {
+                margin: 0 160px 0 0;   
+            }
+        }
+
+        .aplayer-list {
+            width: 360px;
+            max-width: 480px;
+            margin: 16px auto 0 auto; 
+            padding: 16px 12px;
+            transform: translateX(0);
+
+            ol {
+                margin: 0;
+                padding: 0;
+                padding-inline-start: 0;
+            }
+        }
+
+        .aplayer-lrc {
+            display: none;    
+        }
+    }    
+}
+
+
 
 

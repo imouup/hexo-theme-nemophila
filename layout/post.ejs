@@ -1,0 +1,66 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<header class="article-header">
+    <% if (page.cover) { %>
+        <% if (page.cover_showInPost !== false) { %>
+            <div class="article-header-cover" style="background-image: url('<%- url_for(page.cover) %>');"></div>
+        <% } %>
+        
+    <% } %>
+
+    <%- partial('_partial/nav.ejs',{className: ''}) %>
+    <div class="article-info <%= page.cover ? 'need-shadow' : '' %>">
+        <h1 class="article-title"><%= page.title %></h1>
+        <span class="article-author-avatar-date-readtime">
+            <img src="<%- url_for(theme.aboutme.avatar) %>" alt="Article author's Avatar" draggable="false" class="article-author-avatar no-lazyload">
+            <h2 class="article-author-name"><%= config.author_name_in_mother_tongue %></h2>
+            ·
+            <time class="article-date" datetime="<%= page.date.toISOString() %>"><%= page.date.format('YYYY-MM-DD') %></time>
+            ·
+            <span class="article-readtime"><span id="vercount_value_page_pv">Loading...</span>次阅读</span>
+        </span>
+    </div>
+</header>
+<div class="article-content-container">
+    <article class="article-content">
+        <%- partial('_widget/toc.ejs') %>
+        <%- page.content %>
+    </article>
+    <% if (theme.cclicense && theme.cclicense.enable) { %>
+        <div class="article-cclicense">
+            <a class="article-cclicense-text" href="<%= theme.cclicense.url ? theme.cclicense.url : 'https://creativecommons.org' %>"><%= theme.cclicense.type %></a>
+        </div>
+    <% } %>
+    <% if (page.next) { %>
+        <div class="article-next" 
+            <% if (page.next && page.next.cover) { %>
+                style="--bg-url: url('<%- url_for(page.next.cover) %>');"
+            <% } %>>
+            <a class="article-next-link-card" href="<%- url_for(page.next.path) %>">
+                <p class="article-next-text1">Next Post</p>
+                <p class="article-next-title"><%= page.next.title %></p>
+            </a>
+        </div>
+    <% } %>
+    <% if (theme.waline && theme.waline.enable) { %>
+        <div class="waline"></div>
+            <script type="module">
+                import { init } from '<%- url_for("js/waline.js") %>';
+
+                init({
+                el: '.waline',
+                serverURL: '<%= theme.waline.serverURL %>',
+                });
+            </script>
+        </div>
+    <% } %>
+        
+
+<!-- TODO: 整理waline -->
+
+
+
+<!-- 引入代码块所用js -->
+<%- js('js/addImgTitle.js') %>
+<%- js('js/highlight.js')  %> 
+<%- js('js/toc.js')  %>
+<%# js('js/toc.js')  %>

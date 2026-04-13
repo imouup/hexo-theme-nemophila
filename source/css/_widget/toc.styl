@@ -1,0 +1,119 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+#article-toc {
+    display: none;    
+}
+
+@media (min-width: 1500px) {
+    #article-toc {
+        display: block;
+        width: 240px;
+        height: 100%;
+
+        position: absolute;
+        position: -webkit-sticky;
+        top: 0px;
+        left: 100%;
+        margin-left: 32px;
+
+        z-index: 90;
+        overflow: visible;
+
+        #toc-wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 64px;
+            padding-left: 24px;
+            
+            max-height: 80vh;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+            
+        }
+
+        .toc {
+            margin: 0;
+            padding: 0;    
+        }
+
+        .toc-child {
+            list-style: none;
+            padding: 0;
+            padding-left: 16px;
+            margin: 0;
+            
+
+        }
+
+        .toc-item {
+            list-style-type: none; 
+            margin: 0; 
+            height: fit-content;
+            
+
+           
+        }
+
+        .toc-number {
+            display: none;
+        }
+
+        .toc-link {
+            text-decoration: none;
+            transition: all 0.2s;
+            font-family: 'Noto Serif SC', sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text);
+            opacity: 0.8;
+            position: relative;
+            overflow: visible;
+            display: block
+            transition: all 0.2s;
+
+             &::before {
+                content: '';
+                position: absolute;
+                left: -20px;
+                top: 5px;
+                width:16px;
+                height:16px;
+                opacity: 0;
+                transition: all 0.2s;
+
+                --marker-icon: url('../ico/star.svg');
+                background-color: var(--base);
+                -webkit-mask-image: var(--marker-icon);
+                mask-image: var(--marker-icon);
+                -webkit-mask-size: contain;
+                mask-size: contain;
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                    
+            }
+
+           
+
+
+            &:hover, &.active {
+                color: var(--base);
+
+                &::before {
+                    opacity: 1;
+                }
+
+            }    
+        }
+
+        
+
+        
+
+    
+        
+    
+}
+}

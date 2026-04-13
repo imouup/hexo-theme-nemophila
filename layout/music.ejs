@@ -1,0 +1,280 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<div id= "music-page" class="music-container"
+    style="--dark_mask_opacity: 0;
+        --bg-brightness: 0.75">
+    <%- partial('_partial/nav', { className: "theme--music" })  %>
+    <% if (page.player_type && page.player_type === 'metingjs') { %>
+        <meting-js
+            server= <%= page.server %>
+            type= <%= page.meting_type %>
+            id= <%= page.meting_id %>>
+        </meting-js>
+    <% } %>
+        
+    <div id="aplayer"></div>
+</div>
+
+<!-- 令footer消失 -->
+<style>
+    #footer {
+        display: none;
+    }
+</style>
+
+<!-- Metingjs -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<script>
+    // 设置背景函数
+    const setbg = (coverUrl) => {
+        let musicPage = document.getElementById('music-page');
+        if (musicPage && coverUrl) {
+            const loader = new Image();
+
+            musicPage.style.setProperty('--bg-brightness', 0);
+            musicPage.style.setProperty('--dark_mask_opacity', 1);
+
+            musicPage.style.setProperty('--music-bg-img', `url('${coverUrl}')`);
+             
+            loader.onload = ()=>{
+                musicPage.style.setProperty('--bg-brightness', 0.75);
+                musicPage.style.setProperty('--dark_mask_opacity', 0);
+            }
+            loader.src = coverUrl;
+        }
+    }
+
+    const bgchanger = (player) => {
+        if (player.list.audios.length > 0)
+        {
+            const currentAudio = player.list.audios[player.list.index];
+            setbg(currentAudio.cover);
+        }
+
+        player.on('listswitch', (data) => {
+            const nextAudio = player.list.audios[data.index];
+            if (nextAudio && nextAudio.cover) {
+                setbg(nextAudio.cover);
+            }
+        });
+    }
+
+
+
+    
+    // 初始化Aplayer对象
+    const playerType = '<%= page.player_type %>';
+    const audioList = <%- JSON.stringify(page.audio_list || []) %>;
+
+    const urlConvert = (url) =>{
+        if (url) {
+            if (url.startsWith('http') || url.startsWith('//')) {
+                return url;
+            }
+            const cleanUrl = url.replace(/^\/+/, '');
+            let origin = window.location.origin;
+            let finalurl = origin + HEXO_SETTINGS.root + cleanUrl;
+            return finalurl;
+        } 
+        return '';
+        
+    }
+
+    audioList.forEach((audio)=>{
+        audio.url = urlConvert(audio.url);
+        audio.cover = urlConvert(audio.cover);
+        if (audio.lrc) {
+            audio.lrc = urlConvert(audio.lrc);
+        }
+        
+    });
+
+
+    if (playerType && playerType === 'aplayer' && audioList.length>0) {
+        console.log('aplayer initialized')
+
+    const musicPlayerA = new APlayer({
+        container: document.getElementById('aplayer'),
+        lrcType: 3,
+        audio: audioList
+
+    });
+
+    bgchanger(musicPlayerA);
+
+    // //修正歌词滚动函数(Aplayer version)
+    let checkAPlayerInterval = setInterval(function() {
+        if (musicPlayerA) {
+            clearInterval(checkAPlayerInterval);
+
+            if (musicPlayerA.lrc) {
+            
+            musicPlayerA.lrc.userHovering = false;
+
+            let scrollContainer = musicPlayerA.lrc.container.parentElement;
+
+            if (scrollContainer) {
+            scrollContainer.addEventListener('mouseenter', function() {
+                    musicPlayerA.lrc.userHovering = true; // 鼠标进来了，暂停自动滚动
+                });
+                scrollContainer.addEventListener('mouseleave', function() {
+                    musicPlayerA.lrc.userHovering = false; // 鼠标走了，恢复自动滚动
+                }); 
+
+            }
+
+            // update函数
+            musicPlayerA.lrc.update = function(currentTime = this.player.audio.currentTime) {
+                
+                if (this.container && !this.container.querySelector('.lrc-space')) { 
+                    let space1 = document.createElement('div');
+                    let space2 = document.createElement('div')
+                    space1.classList.add('lrc-space');
+                    space1.style.height = '30vh';
+                    space2.classList.add('lrc-space');
+                    space2.style.height = '15vh';
+
+                    this.container.insertBefore(space1, this.container.firstChild);
+                    this.container.appendChild(space2);
+                }
+                
+                
+                // if (this.userHovering) return;
+
+                if (
+                    this.index > this.current.length - 1 ||
+                    currentTime < this.current[this.index][0] ||
+                    (!this.current[this.index + 1] || currentTime >= this.current[this.index + 1][0])
+                ) {
+                    for (let i = 0; i < this.current.length; i++) {
+                        if (
+                            currentTime >= this.current[i][0] &&
+                            (!this.current[i + 1] || currentTime < this.current[i + 1][0])
+                        ) {
+                            this.index = i;
+                        
+                        let currentLine = this.container.getElementsByTagName("p")[this.index];   
+                        
+                        if (currentLine) {
+                            let preLine = this.container.getElementsByClassName("aplayer-lrc-current")[0];
+                            if (preLine) preLine.classList.remove("aplayer-lrc-current");
+                            currentLine.classList.add("aplayer-lrc-current");
+
+                            let scrollContainer = this.container.parentElement;
+                            let viewportHeight = scrollContainer.clientHeight;
+                            let offsetTop = currentLine.offsetTop; 
+                            let lineHeight = currentLine.clientHeight;
+
+                            let targetScrollTop = offsetTop - (viewportHeight / 3) + (lineHeight / 2);
+                            scrollContainer.scrollTop = targetScrollTop;
+
+                        }
+                            
+                            
+                    }
+
+            }
+
+            
+
+        }
+    }}
+
+    }
+    }, 500)
+
+
+    }
+
+    
+    //修正歌词滚动函数(metingjs version)
+    let checkMetingjsnterval = setInterval(function() {
+            const meting = document.getElementsByTagName("meting-js")[0]
+
+            if (meting && meting.aplayer && meting.aplayer.lrc) {
+                clearInterval(checkMetingjsnterval);
+                const musicPlayer = meting.aplayer;
+                console.log('metingjs initialized')
+
+                musicPlayer.lrc.userHovering = false;
+
+                let scrollContainer = musicPlayer.lrc.container.parentElement;
+
+                if (scrollContainer) {
+                scrollContainer.addEventListener('mouseenter', function() {
+                        musicPlayer.lrc.userHovering = true; // 鼠标进来了，暂停自动滚动
+                    });
+                    scrollContainer.addEventListener('mouseleave', function() {
+                        musicPlayer.lrc.userHovering = false; // 鼠标走了，恢复自动滚动
+                    }); 
+
+                }
+            
+            
+            bgchanger(musicPlayer);
+
+            // update函数
+            musicPlayer.lrc.update = function(currentTime = this.player.audio.currentTime) {
+
+                // 插入占位符
+            if (this.container && !this.container.querySelector('.lrc-space')) { 
+                    let space1 = document.createElement('div');
+                    let space2 = document.createElement('div')
+                    space1.classList.add('lrc-space');
+                    space1.style.height = '30vh';
+                    space2.classList.add('lrc-space');
+                    space2.style.height = '15vh';
+
+                    this.container.insertBefore(space1, this.container.firstChild);
+                    this.container.appendChild(space2);
+                }
+                    
+                
+                
+                // if (this.userHovering) return;  // 若
+
+
+                if (
+                    this.index > this.current.length - 1 ||
+                    currentTime < this.current[this.index][0] ||
+                    (!this.current[this.index + 1] || currentTime >= this.current[this.index + 1][0])
+                ) {
+                    for (let i = 0; i < this.current.length; i++) {
+                        if (
+                            currentTime >= this.current[i][0] &&
+                            (!this.current[i + 1] || currentTime < this.current[i + 1][0])
+                        ) {
+                            this.index = i;
+                        
+                        let currentLine = this.container.getElementsByTagName("p")[this.index];   
+                        
+                        if (currentLine) {
+                            let preLine = this.container.getElementsByClassName("aplayer-lrc-current")[0];
+                            if (preLine) preLine.classList.remove("aplayer-lrc-current");
+                            currentLine.classList.add("aplayer-lrc-current");
+
+                            let scrollContainer = this.container.parentElement;
+                            let viewportHeight = scrollContainer.clientHeight;
+                            let offsetTop = currentLine.offsetTop; 
+                            let lineHeight = currentLine.clientHeight;
+
+                            let targetScrollTop = offsetTop - (viewportHeight / 3) + (lineHeight / 2);
+                            scrollContainer.scrollTop = targetScrollTop;
+                    
+
+                        }
+                            
+                            
+                    }
+
+                }
+
+                
+
+            }
+        }}
+
+    }, 500);
+
+</script>
+

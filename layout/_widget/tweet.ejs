@@ -4,7 +4,7 @@
     <img src="<%- url_for(theme.aboutme.avatar) %>" alt="Tweet Avatar" id="tweet-avatar" draggable="false">
     <div id="tweet-content">
         <div id="tweet-info">
-            <span id="author-name"><%= config.author_name_in_mother_tongue %></span>
+            <span id="author-name"><%= config.nickname || config.author %></span>
             <span id="tweet-time"> Just now  </span>
         </div>
         <p id="tweet-text">我们虽然距离很远很远，非常非常的远，但是思念或许真的可以穿越时间和距离。</p>
@@ -14,7 +14,7 @@
 <!-- Mobile -->
 <div id="tweet-m">
     <img src="<%- url_for(theme.aboutme.avatar) %>" alt="Tweet Avatar" id="tweet-avatar" draggable="false">
-    <span id="author-name"><span id="author-name-main"><%= config.author_name_in_mother_tongue %></span><span id="author-name-sub">&nbsp;@<%= config.author %></span></span>
+    <span id="author-name"><span id="author-name-main"><%= config.nickname || config.author %></span><span id="author-name-sub">&nbsp;@<%= config.author %></span></span>
     <span class="tweet-contact">
     <% for (let name in theme.contact) { %>
         <% let item = theme.contact[name]; %>

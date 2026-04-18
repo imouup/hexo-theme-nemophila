@@ -12,7 +12,7 @@
         <h1 class="article-title"><%= page.title %></h1>
         <span class="article-author-avatar-date-readtime">
             <img src="<%- url_for(theme.aboutme.avatar) %>" alt="Article author's Avatar" draggable="false" class="article-author-avatar no-lazyload">
-            <h2 class="article-author-name"><%= config.author_name_in_mother_tongue %></h2>
+            <h2 class="article-author-name"><%= config.nickname || config.author %></h2>
             ·
             <time class="article-date" datetime="<%= page.date.toISOString() %>"><%= page.date.format('YYYY-MM-DD') %></time>
             ·

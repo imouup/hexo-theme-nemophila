@@ -71,8 +71,14 @@
         <a href="/about" style="text-decoration: none;">
             <img class="navbar-submenu-avatar" src="<%- url_for(theme.aboutme.avatar) %>" alt="avatar">            
         </a>
-        <a href="/about" class="navbar-submenu-name_mo"><%= config.author_name_in_mother_tongue %></a>
-        <a href="/about" class="navbar-submenu-name">@ <%= config.author %></a>
+        <% if (config.nickname) { %>
+            <a href="/about" class="navbar-submenu-name_mo"><%= config.nickname %></a>
+        <% } else if (config.author) { %>
+            <a href="/about" class="navbar-submenu-name_mo"><%= config.author %></a>
+        <% } %>
+        <% if (config.nickname && config.author) { %>
+            <a href="/about" class="navbar-submenu-name">@ <%= config.author %></a>
+        <% } %>
     
         <span class="navbar-submenu-contact">
             <% for (let name in theme.contact) { %>

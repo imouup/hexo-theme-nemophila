@@ -13,7 +13,7 @@
   --waline-bg-color-hover: #f0f0f0;
   --waline-border-color: var(--bg);
   --waline-disable-bg-color: #f8f8f8;
-  --waline-disable-color: #000;
+  --waline-disable-color: var(--text-strong);
   --waline-code-bg-color: #282c34;
   --waline-bq-color: #f0f0f0;
   --waline-avatar-size: 3.25rem;
@@ -86,7 +86,7 @@
 }
 [data-waline] pre::-webkit-scrollbar-track-piece:horizontal {
   border-radius:6px;
-  background:rgba(0,0,0,.1)
+  background:var(--overlay-black-faint)
 }
 [data-waline] pre::-webkit-scrollbar-thumb:horizontal {
   width:6px;
@@ -212,7 +212,7 @@
   margin:0 auto;
   border:var(--waline-border);
   border-radius:var(--waline-avatar-radius)
-  box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45);
+  box-shadow: 0px 4px 29.8px 3px var(--shadow-ambient);
 }
 @media(max-width: 720px) {
   .wl-avatar {
@@ -230,7 +230,7 @@
   color:var(--waline-theme-color);
   font-size:.75em;
   word-break:break-all
-  text-shadow: 0px 4px 29.8px rgba(205, 216, 232, 0.45);
+  text-shadow: 0px 4px 29.8px var(--shadow-ambient);
 }
 .wl-panel {
   position:relative;
@@ -244,7 +244,7 @@
   border-radius:15px;
   background:var(--waline-bg-color);
   box-shadow:var(--waline-box-shadow)
-  box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45);
+  box-shadow: 0px 4px 29.8px 3px var(--shadow-ambient);
   padding: 8px 2px;
 }
 .wl-header {
@@ -472,7 +472,7 @@
 }
 .wl-emoji-popup .wl-tab-wrapper::-webkit-scrollbar-track-piece:vertical {
   border-radius:6px;
-  background:rgba(0,0,0,.1)
+  background:var(--overlay-black-faint)
 }
 .wl-emoji-popup .wl-tab-wrapper::-webkit-scrollbar-thumb:vertical {
   width:6px;
@@ -501,7 +501,7 @@
 }
 .wl-emoji-popup .wl-tabs::-webkit-scrollbar-track-piece:horizontal {
   border-radius:6px;
-  background:rgba(0,0,0,.1)
+  background:var(--overlay-black-faint)
 }
 .wl-emoji-popup .wl-tabs::-webkit-scrollbar-thumb:horizontal {
   height:6px;
@@ -724,7 +724,7 @@
   z-index:999;
   display:block;
   width:100%;
-  background:linear-gradient(180deg, #000, rgba(255, 255, 255, 0.9))
+  background:linear-gradient(180deg, var(--text-strong), rgba(255, 255, 255, 0.9))
 }
 .wl-card .wl-content.expand::after {
   content:attr(data-expand);

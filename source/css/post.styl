@@ -81,14 +81,14 @@
 
     .article-info.need-shadow {
         .article-title, .article-author-name, .article-date, .article-readtime {
-            text-shadow: 0px 4px 50px rgba(255, 255, 255, 1.0);
+            text-shadow: 0px 4px 50px var(--shadow-white);
         }
         .article-author-avatar {
-            box-shadow: 0px 4px 50px 3px rgba(255, 255, 255, 1.0);    
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 50px 3px var(--shadow-white);    
+            border: 2px solid var(--shadow-white-border);
         }
         .article-author-avatar-date-readtime {
-            text-shadow: 0px 4px 50px 3px rgba(255, 255, 255, 1.0);   
+            text-shadow: 0px 4px 50px 3px var(--shadow-white);   
         }
         
 
@@ -130,7 +130,7 @@
 .article-content strong, 
 .article-content b {
     font-weight: 700;
-    color: #000;    
+    color: var(--text-strong);    
 }
 
 .article-content h1{
@@ -291,7 +291,7 @@
         align-items: center;
         justify-content: flex-end;
         gap: 8px;
-        box-shadow: 0px 2px 10px 1px rgba(205, 216, 232, 0.25);
+        box-shadow: 0px 2px 10px 1px var(--shadow-ambient-soft);
         z-index: 2;
         pointer-events: auto;
         z-index: 2;
@@ -622,7 +622,7 @@
     padding: 24px 48px 24px 48px;
     background-color: var(--white);
     border-radius: 15px;
-    box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45);
+    box-shadow: 0px 4px 29.8px 3px var(--shadow-ambient);
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -666,7 +666,7 @@
         width: 100%;
         text-align: right;
         z-index: 2;
-        text-shadow: 0px 1px 10px rgba(255, 255, 255,1.0);
+        text-shadow: 0px 1px 10px var(--shadow-white);
         
     }
 
@@ -679,7 +679,7 @@
         width: 100%;
         text-align: right;
         z-index: 2;
-        text-shadow: 0px 1px 10px rgba(255, 255, 255, 1.0);
+        text-shadow: 0px 1px 10px var(--shadow-white);
     }
 
 
@@ -688,7 +688,7 @@
 .article-content-container .aplayer {
     width: 640px !important;
     border-radius: 8px !important;
-    box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45) !important;  
+    box-shadow: 0px 4px 29.8px 3px var(--shadow-ambient) !important;  
     font-family: 'Noto Serif SC', serif !important;
     color: var(--text) !important;
 
@@ -713,7 +713,7 @@
     }
 
     .aplayer-bar {
-        background: rgba(196, 196, 196, 0.15) !important;
+        background: var(--overlay-track) !important;
     }
 
     .aplayer-played {
@@ -721,7 +721,7 @@
     }
 
     .aplayer-loaded {
-        background: rgba(141, 144, 148, 0.25) !important;    
+        background: var(--overlay-buffer) !important;    
     }
 
     .aplayer-thumb {

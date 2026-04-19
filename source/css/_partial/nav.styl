@@ -3,7 +3,7 @@
     display: flex;
     margin: 0.75vh  1.5vw;
     background-color: var(--white);
-    box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45);
+    box-shadow: 0px 4px 29.8px 3px var(--shadow-ambient);
     height: 84px;
     position: relative;
     align-items: center;
@@ -17,7 +17,7 @@
 
         &:hover {
             background-color: var(--white);
-            box-shadow: 0px 4px 29.8px 3px rgba(205, 216, 232, 0.45);
+            box-shadow: 0px 4px 29.8px 3px var(--shadow-ambient);
         }
     }
 
@@ -25,20 +25,20 @@
         opacity: 0;
         transition: all 0.2s;
         border-radius: 8px;
-        background-color: rgba(246, 253, 255, 0.6);
+        background-color: var(--nav-panel-bg);
 
         &:hover {
             opacity: 1.0;
             
-            box-shadow: 0px 4px 15px 3px rgba(73, 73, 73, 0.2);
+            box-shadow: 0px 4px 15px 3px var(--nav-hover-shadow);
             -webkit-backdrop-filter: blur(10px); // 背景模糊
             backdrop-filter: blur(20px);
             
 
         }    
         .nav-item-submenu {
-            background-color: rgba(246, 253, 255, 0.6);
-            box-shadow: 0px 4px 15px 3px rgba(58, 58, 58, 0.2);
+            background-color: var(--nav-panel-bg);
+            box-shadow: 0px 4px 15px 3px var(--nav-submenu-shadow);
             -webkit-backdrop-filter: blur(10px); // 背景模糊
             backdrop-filter: blur(20px);
             border-radius: 2px;
@@ -97,7 +97,7 @@
         gap: 8px;
         position: absolute;
         background-color: var(--white);
-        box-shadow: 0px 3px 30px 1px rgba(205, 216, 232, 1);
+        box-shadow: 0px 3px 30px 1px var(--shadow-ambient-solid);
         top:180%;
         transform: translateX(-15%);
         padding: 20px 20px 26px;
@@ -183,7 +183,7 @@
         transition: all 0.2s;
 
         .fa {
-            color: rgb(59, 59, 59); 
+            color: var(--nav-icon-color); 
             transform: translateY(24%);
             font-size: 12px
             transition: all 0.2s;
@@ -372,7 +372,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: var(--overlay-black-soft);
         backdrop-filter: blur(2px);  
         transition: all 0.3s ease-in-out;
         z-index: -1;

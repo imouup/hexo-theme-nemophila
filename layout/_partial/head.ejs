@@ -17,6 +17,8 @@
     <link rel="icon" href="<%= url_for('ico/Nemo.svg')  %>" />
     <%- css('css/style.css') %>
     <%- css('css/all.min.css') %>
+    <!-- ASCII-painting -->
+    <%- js('js/nya.js') %>
     <!-- 引入Noto系和非斜体的Cormorant Garamond字体 -->
     <%- js('js/getfonts.js') %>
     <!-- 引入LaTex支持css -->
@@ -35,6 +37,10 @@
             root: "<%- config.root %>", 
             url: "<%- config.url %>",
             author: "<%- config.author %>"
+        };
+
+        let Nemophila = {
+            version: "0.3.1"
         };
 
         let THEME_SETTINGS = {

@@ -35,7 +35,7 @@ git clone https://github.com/imouup/hexo-theme-nemophila.git
 <br>
 
 # 文档
-(建设中...,请先参考开发日志)
+[Nemophila主题wiki](https://github.com/imouup/hexo-theme-nemophila/wiki)
 
 <br>
 

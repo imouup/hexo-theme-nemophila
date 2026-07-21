@@ -37,9 +37,7 @@
     <!-- 引入Linking -->
     <%- js('js/linking.js') %>
     <!-- 引入访问量计数器 -->
-    <% if (counterService === 'nanocount') { %>
-        <script defer src="<%= counterServer %>/nano.js"></script>
-    <% } else { %>
+    <% if (counterService !== 'nanocount') { %>
         <script defer src="https://events.vercount.one/js"></script>
     <% } %>
     <script>
@@ -64,12 +62,25 @@
             }
         };
 
+        const normalizeNanocountPath = (path) => {
+            const normalized = path.replace(/\/+$/, '');
+            return normalized || '/';
+        };
+
         window.NEMOPHILA_COUNTER = {
             getPageViews: async (url) => {
                 const counter = THEME_SETTINGS.counter;
-                const endpoint = counter.service === 'nanocount'
-                    ? counter.server + '/api/v1/count?url=' + encodeURIComponent(url)
-                    : 'https://events.vercount.one/api/v2/log?url=' + encodeURIComponent(url);
+                let endpoint;
+                if (counter.service === 'nanocount') {
+                    const target = new URL(url, window.location.href);
+                    const query = new URLSearchParams({
+                        host: target.hostname,
+                        path: normalizeNanocountPath(target.pathname)
+                    });
+                    endpoint = counter.server + '/api/v1/count?' + query;
+                } else {
+                    endpoint = 'https://events.vercount.one/api/v2/log?url=' + encodeURIComponent(url);
+                }
                 const response = await fetch(endpoint);
                 if (!response.ok) throw new Error('Counter request failed');
                 const payload = await response.json();
@@ -79,5 +90,31 @@
                 return views;
             }
         };
+
+        if (THEME_SETTINGS.counter.service === 'nanocount') {
+            document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    const response = await fetch(THEME_SETTINGS.counter.server + '/api/v1/hit', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            host: window.location.hostname,
+                            path: normalizeNanocountPath(window.location.pathname)
+                        }),
+                        credentials: 'omit',
+                        mode: 'cors',
+                        keepalive: true
+                    });
+                    if (!response.ok) throw new Error('Counter request failed');
+                    const payload = await response.json();
+                    const views = payload && payload.data && payload.data.pageViews;
+                    if (views === undefined || views === null) throw new Error('Invalid counter response');
+                    document.querySelectorAll('[data-nanocount-page]').forEach((node) => {
+                        node.textContent = Number(views).toLocaleString();
+                    });
+                } catch (error) {
+                    console.error('Error updating view count:', error);
+                }
+            });
+        }
     </script>
 </head>

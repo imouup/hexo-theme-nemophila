@@ -1,4 +1,10 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<%
+    const counterService = theme.counter && theme.counter.service === 'nanocount' ? 'nanocount' : 'vercount';
+    const counterServer = counterService === 'nanocount' && theme.counter.server
+        ? String(theme.counter.server).replace(/\/+$/, '')
+        : '';
+%>
 <head>
     <title>
         <% if (is_post()) { %>
@@ -28,8 +34,12 @@
     <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
     <!-- 引入Linking -->
     <%- js('js/linking.js') %>
-    <!-- 引入vercount计数器 -->
-    <script defer src="https://events.vercount.one/js"></script>
+    <!-- 引入访问量计数器 -->
+    <% if (counterService === 'nanocount') { %>
+        <script defer src="<%= counterServer %>/nano.js"></script>
+    <% } else { %>
+        <script defer src="https://events.vercount.one/js"></script>
+    <% } %>
     <script>
         let HEXO_SETTINGS = {
             root: "<%- config.root %>", 
@@ -42,6 +52,26 @@
                 enable: <%- theme.lazyload && theme.lazyload.enable ? 'true' : 'false' %>,
                 loading_img: "<%- theme.lazyload && theme.lazyload.loading_img ? theme.lazyload.loading_img : '/images/yachiyo_loading_640.webp' %>"
             },
-            };        
+            counter: {
+                service: <%- JSON.stringify(counterService) %>,
+                server: <%- JSON.stringify(counterServer) %>
+            }
+        };
+
+        window.NEMOPHILA_COUNTER = {
+            getPageViews: async (url) => {
+                const counter = THEME_SETTINGS.counter;
+                const endpoint = counter.service === 'nanocount'
+                    ? counter.server + '/api/v1/count?url=' + encodeURIComponent(url)
+                    : 'https://events.vercount.one/api/v2/log?url=' + encodeURIComponent(url);
+                const response = await fetch(endpoint);
+                if (!response.ok) throw new Error('Counter request failed');
+                const payload = await response.json();
+                const data = payload && payload.data;
+                const views = counter.service === 'nanocount' ? data && data.pageViews : data && data.page_pv;
+                if (views === undefined || views === null) throw new Error('Invalid counter response');
+                return views;
+            }
+        };
     </script>
 </head>

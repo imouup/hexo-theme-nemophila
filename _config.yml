@@ -70,6 +70,10 @@ waline:
   enable: true
   serverURL: 'https://waline-test.mouup.top' 
 
+counter:
+  service: vercount # vercount 或 nanocount
+  server: '' # 仅 nanocount 使用，例如 https://count.example.com；vercount 会忽略此项
+
 # markdown parser
 markdown_it_plus:
   render:
@@ -98,4 +102,4 @@ feed:
   content_limit_delim: ' ' 
   order_by: -date      # 按日期倒序
   icon: ico/Nemo.svg       # 自定义Feed图标
-  autodiscovery: true  
+  autodiscovery: true

@@ -23,17 +23,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
     }
 
     // 批量获取阅读量的函数
-    const fetchBatchVercount = (elements) => {
+    const fetchBatchViewCounts = (elements) => {
         if (!elements || elements.length === 0) return;
 
         elements.forEach(element => {
             const postPath = element.getAttribute('data-path');
             const url = getUrl(postPath);
-            const vercountUrl = "https://events.vercount.one/api/v2/log?url=" + encodeURIComponent(url);
-            fetch(vercountUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const readTime = data['data']['page_pv'];
+            window.NEMOPHILA_COUNTER.getPageViews(url)
+                .then(readTime => {
                     element.textContent = readTime;
                 })
                 .catch(error => {
@@ -224,7 +221,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         loadedCount += posts.length;
 
         // 批量获取并更新阅读量
-        fetchBatchVercount(newViewCountElements);
+        fetchBatchViewCounts(newViewCountElements);
     }
 
     btn.addEventListener('click', async () => {

@@ -152,7 +152,7 @@
 
 <%- js('js/previous_btn.js') %>
 
-<!-- 使用 vercount api 获取文章阅读量 -->
+<!-- 获取文章阅读量 -->
 <script>
     const getUrl = (rawurl) => {
         if (rawurl.startsWith('http://') || rawurl.startsWith('https://')) {
@@ -167,16 +167,13 @@
     }
 
     // fetch 函数
-    const fetchVercout = () => {
+    const fetchViewCounts = () => {
         const viewCountElements = document.querySelectorAll('.view-count');
         viewCountElements.forEach(element => {
             const postPath = element.getAttribute('data-path');
             const url = getUrl(postPath);
-            const vercountUrl = "https://events.vercount.one/api/v2/log?url=" + encodeURIComponent(url);
-            fetch(vercountUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const readTime = data['data']['page_pv'];
+            window.NEMOPHILA_COUNTER.getPageViews(url)
+                .then(readTime => {
                     element.textContent = readTime;
                 })
                 .catch(error => {
@@ -186,7 +183,7 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', fetchVercout);
+    document.addEventListener('DOMContentLoaded', fetchViewCounts);
 
 </script>
 
